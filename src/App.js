@@ -4,6 +4,7 @@ import ParkList from './components/ParkList';
 import { Route, Switch } from 'react-router-dom'
 import NavBar from './components/NavBar'
 import Home from './components/Home'
+import ParkPage from './components/ParkPage'
 import MyParks from './components/MyParks'
 import ParkDetail from './components/ParkDetail'
 import About from './components/About'
@@ -16,10 +17,11 @@ function App() {
   const [userId, setUserId] = useState(1)
 
   useEffect(() => {
-    fetch("http://localhost:3001/parks")
+    fetch(parksUrl)
      .then(res => res.json())
      .then(setParks)
   }, [] )
+
 
 
   return (
@@ -30,7 +32,7 @@ function App() {
           <Home />
         </Route>
         <Route exact path='/parks'>
-          <ParkList parks={parks} />
+          <ParkPage parks={parks} />
         </Route>
         <Route path='/user/:userid'>
           <MyParks />

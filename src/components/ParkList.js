@@ -1,17 +1,15 @@
 import React from 'react';
-import ParkItem from './ParkItem';
+import ParkListItem from './ParkListItem';
 
 
 function ParkList({parks}){
-    
-    const parkItems = parks.map(park => <ParkItem key={park['Location Number']} {...park} /> )
-    
+
+
+    const parkItems = parks.map(park => <ParkListItem key={park['Location Number']} {...park} /> )
+
     return(
         <div>
-            <ul>
-                {parkItems}
-            </ul>
-
+            {parkItems}
         </div>
     )
 }
