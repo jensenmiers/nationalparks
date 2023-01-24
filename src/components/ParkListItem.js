@@ -1,16 +1,16 @@
 import React from 'react';
 
-function ParkItem(props){
+function ParkListItem(props){
 
     
     return(
         <div>
-            <li>
+        
                 <h5>{props['Location Name']}</h5>
-            </li>
+    
 
         </div>
     )
 }
 
-export default ParkItem;
+export default ParkListItem;

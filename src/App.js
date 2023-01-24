@@ -1,6 +1,7 @@
 // import './App.css';
-import React,{useState, useEffect} from 'react';
-import ParkList from './components/ParkList';
+import ParkPage from './components/ParkPage'
+import React,{useState,useEffect} from 'react';
+
 
 function App() {
 
@@ -10,15 +11,16 @@ function App() {
   
 
   useEffect(() => {
-    fetch("http://localhost:3001/parks")
+    fetch(parksUrl)
      .then(res => res.json())
      .then(setParks)
   }, [] )
 
 
+
   return (
     <div className="App">
-      <ParkList parks={parks} />
+      <ParkPage parks={parks}/>
     </div>
   );
 }
