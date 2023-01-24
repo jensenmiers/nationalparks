@@ -1,6 +1,7 @@
 {
+  "reviews": [{"userId": 1, "parkId": "yell", "text": "a great time", "image": ""}],
+  "users": [{"id": 1, "savedParks": []}],
   "parks": [
-    [
       {
         "Location Number": "BRVB",
         "Location Name": "Brown v. Board of Education National Historic Site",
@@ -45396,6 +45397,5 @@
         ]
       }
     ]
-  ]
 }
 
