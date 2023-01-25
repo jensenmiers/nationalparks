@@ -56,8 +56,8 @@ function App() {
         <Route exact path='/user/:userid'>
           <MyParks userData={userData} parks={parks}/>
         </Route>
-        <Route exact path='/parks/:parkid'>
-          <ParkDetail parks={parks} />
+        <Route path='/parks/:parkid'>
+          <ParkDetail parks={parks} setParks={setParks}/>
         </Route>
         <Route path='/about'>
           <About />

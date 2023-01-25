@@ -10,21 +10,7 @@
   "users": [
     {
       "id": 1,
-      "savedParks": [
-        "BRVB",
-        "BRCA",
-        "buff",
-        "cali",
-        "cana",
-        "cali",
-        "cali",
-        "CLBA",
-        "cali",
-        "cana",
-        "CARI",
-        "cach",
-        "ELIS"
-      ]
+      "savedParks": []
     }
   ],
   "parks": [
