@@ -5,10 +5,10 @@ import ParkListItem from './ParkListItem';
 function ParkList({parks, onClickSave }){
 
 
-    const parkItems = parks.map(park => <ParkListItem key={park['Location Number']} park={park} onClickSave={onClickSave} /> )
+    const parkItems = parks.slice(0,20).map(park => <ParkListItem key={park['id']} park={park} onClickSave={onClickSave} /> )
 
     return(
-        <div>
+        <div className="parkContainer">
             {parkItems}
         </div>
     )

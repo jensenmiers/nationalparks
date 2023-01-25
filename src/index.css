@@ -11,3 +11,88 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.nav {
+  display: flex;
+  justify-content: right;
+  background-color: #1f513f;
+  color: white;
+}
+
+.nav a {
+  margin: 10px;
+  text-decoration: none;
+}
+
+.nav .active {
+  text-decoration: underline;
+}
+
+.nav a:visited {
+  color: white;
+}
+
+.nav a:last-child {
+  margin-right: 20px;
+}
+
+.searchContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.searchBox {
+  border-radius: .3em;
+  border-width: 1.5px;
+  height: 18pt;
+  font-size: 16pt;
+  margin: 20px;
+}
+
+.searchIcon {
+  margin: 25px -10px;
+  display: inline;
+}
+
+
+
+.parkContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+}
+
+.parkCard {
+  flex-grow: 1;
+  position: relative;
+  border-style: solid;
+  border-color: black;
+  max-width: 600px;
+}
+
+.browseImg {
+  border-style: solid;
+  border-color: pink;
+  max-height: 100px;
+  overflow: hidden;
+  display: inline;
+  position: absolute;
+  right: 0;
+}
+
+.browseImg img {
+  max-height: 100px;
+}
+
+.parkContent {
+  /* background-color: pink; */
+  height: 100px;
+  padding: 5px;
+  width: 66%
+}
+
+.parkContent p{
+  font-size: 12px;
+}
+
