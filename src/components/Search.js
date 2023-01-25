@@ -1,14 +1,16 @@
 import React from 'react';
+import { FaSearch } from 'react-icons/fa'
 
 function Search({searchTerm,handleSearch}){
     return(
-        <div>
-            <label>Search Parks: </label>
+        <div className="searchContainer">
+            <FaSearch className="searchIcon" />
             <input
+                className="searchBox"
                 value={searchTerm}
                 type='text'
                 id='search'
-                placeholder='Type a park name...'
+                placeholder='Search by park name...'
                 onChange={(e) => handleSearch(e.target.value)}
             />
         </div>
