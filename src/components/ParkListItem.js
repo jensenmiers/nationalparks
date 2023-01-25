@@ -9,8 +9,8 @@ function ParkListItem(props){
     return(
         <div>
         
-                <h5>{props['Location Name']}</h5>
-                <Link to={`${match.url}/${props['Location Number']}`}>See more</Link> 
+                <h5>{props['id']}</h5>
+                <Link to={`${match.url}/${props['id']}`}>See more</Link> 
         
 
         </div>
