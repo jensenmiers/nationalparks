@@ -27,7 +27,7 @@ function ParkDetail({ parks, setParks }) {
             ))) 
         
     }
-    const reviews = park.review
+    const reviews = park.review || []
 
     return (
         <div>

@@ -10,7 +10,9 @@
   "users": [
     {
       "id": 1,
-      "savedParks": []
+      "savedParks": [
+        "BRVB"
+      ]
     }
   ],
   "parks": [
@@ -96,6 +98,10 @@
           "id": "467DC8B8-0B7D-436D-A026-80A22358F615",
           "name": "Bookstore and Park Store"
         }
+      ],
+      "review": [
+        "awesome",
+        "awesome"
       ]
     },
     {
@@ -302,6 +308,9 @@
           "id": "467DC8B8-0B7D-436D-A026-80A22358F615",
           "name": "Bookstore and Park Store"
         }
+      ],
+      "review": [
+        "great"
       ]
     },
     {

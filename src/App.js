@@ -1,6 +1,5 @@
 // import './App.css';
 import React,{useState, useEffect} from 'react';
-import ParkList from './components/ParkList';
 import { Route, Switch } from 'react-router-dom'
 import NavBar from './components/NavBar'
 import Home from './components/Home'
@@ -12,9 +11,10 @@ import About from './components/About'
 function App() {
 
   const parksUrl = 'http://localhost:3001/parks'
-
+  const baseURL = 'http://localhost:3001'
   const [parks,setParks] = useState([])
   const [userId, setUserId] = useState(1)
+  const [userData, setUserData]=useState({})
 
   useEffect(() => {
     fetch(parksUrl)
@@ -22,8 +22,27 @@ function App() {
      .then(setParks)
   }, [] )
 
+  useEffect(()=> {
+    fetch(`${baseURL}/users/${userId}`)
+    .then(res => res.json())
+    .then(setUserData)
+  }, [])
 
+  // handler functions
+  function handleClickSavePark(savedPark){
 
+    fetch(`${baseURL}/users/${userId}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({savedParks: [...userData.savedParks, savedPark['id']]})
+    })
+    .then(res => res.json())
+    .then(setUserData)
+  }
+
+  console.log('hello from app')
   return (
     <div className="App">
       <NavBar userId={userId} />
@@ -32,10 +51,10 @@ function App() {
           <Home />
         </Route>
         <Route exact path='/parks'>
-          <ParkPage parks={parks} />
+          <ParkPage parks={parks} onClickSave={handleClickSavePark} />
         </Route>
-        <Route path='/user/:userid'>
-          <MyParks />
+        <Route exact path='/user/:userid'>
+          <MyParks userData={userData} parks={parks}/>
         </Route>
         <Route path='/parks/:parkid'>
           <ParkDetail parks={parks} setParks={setParks}/>

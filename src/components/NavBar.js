@@ -2,11 +2,11 @@ import { NavLink } from 'react-router-dom'
 
 function NavBar({ userId }){
     return (
-        <nav>
+        <nav className='nav'>
             <NavLink exact to='/'>Home</NavLink>
             <NavLink to='/parks'>Browse</NavLink>
             <NavLink to={`/user/${userId}`}>MyParks</NavLink>
-            <NavLink to='/About'>About</NavLink>
+            <NavLink to='/about'>About</NavLink>
         </nav>
     )
 }
