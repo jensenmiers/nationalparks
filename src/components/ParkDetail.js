@@ -23,7 +23,7 @@ function ParkDetail({ parks, setParks }) {
         }
         fetch(`http://localhost:3001/parks/${park["id"]}`,options)
             .then(res => res.json())
-            .then(jsresponse => setParks(parks.map(park => park.id === parkId ? jsresponse: park 
+            .then(jsresponse => setParks(parks.map(park => park.id === parkId ? jsresponse : park 
             ))) 
         
     }
@@ -31,7 +31,7 @@ function ParkDetail({ parks, setParks }) {
 
     return (
         <div>
-            {/* <h1>{`hello from park details for ${park["id"]}`}</h1> */}
+            <h1>{`hello from park details for ${park["id"]}`}</h1>
             <ReviewForm setReviewForm={updateReviewArray} />
             <ReviewList reviews={reviews} /> 
             

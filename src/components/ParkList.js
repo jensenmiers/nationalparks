@@ -5,7 +5,7 @@ import ParkListItem from './ParkListItem';
 function ParkList({parks}){
 
 
-    const parkItems = parks.map(park => <ParkListItem key={park['Location Number']} {...park} /> )
+    const parkItems = parks.map(park => <ParkListItem key={park['id']} {...park} /> )
 
     return(
         <div>
