@@ -2,7 +2,7 @@ import React,{useState} from 'react';
 import ParkList from './ParkList';
 import Search from './Search';
 
-function ParkPage({parks}) {
+function ParkPage({parks, onClickSave }) {
 
   const [searchTerm, setSearchTerm] = useState('')
 
@@ -13,7 +13,7 @@ function ParkPage({parks}) {
   return (
     <div>
       <Search searchTerm={searchTerm} handleSearch={setSearchTerm} />
-      <ParkList parks={filteredParks} />
+      <ParkList parks={filteredParks} onClickSave={onClickSave} />
       
     </div>
   )   

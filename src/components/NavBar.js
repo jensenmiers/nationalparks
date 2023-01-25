@@ -6,7 +6,7 @@ function NavBar({ userId }){
             <NavLink exact to='/'>Home</NavLink>
             <NavLink to='/parks'>Browse</NavLink>
             <NavLink to={`/user/${userId}`}>MyParks</NavLink>
-            <NavLink to='/About'>About</NavLink>
+            <NavLink to='/about'>About</NavLink>
         </nav>
     )
 }
