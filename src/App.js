@@ -38,7 +38,7 @@ function App() {
           <MyParks />
         </Route>
         <Route path='/parks/:parkid'>
-          <ParkDetail parks={parks} />
+          <ParkDetail parks={parks} setParks={setParks}/>
         </Route>
         <Route path='/about'>
           <About />
