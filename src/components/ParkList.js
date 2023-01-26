@@ -4,15 +4,29 @@ import ParkListItem from './ParkListItem';
 
 function ParkList({parks, onClickSave }){
 
-
-    const parkItems = parks.slice(0,24).map(park => <ParkListItem key={park['id']} park={park} onClickSave={onClickSave} /> )
-
-    console.log("window height", window.innerHeight)
-    // const atBottom = window.scrollY/window.innerHeight > .9
+    const [counter, setCounter] = useState(0)
+    const [scrollPosition, setScrollPosition] = useState(0);
     
-    // useEffect(()=>{
-    //     setIsAtBottom(window.scrollY/window.innerHeight > .9)
-    // }, [window.scrollY])
+    const handleScroll = () => {
+        const position = window.pageYOffset;
+        setScrollPosition(position);
+    };
+
+    useEffect(() => {
+        window.addEventListener('scroll', handleScroll, { passive: true });
+
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
+
+    const atBottom = scrollPosition >= (document.body.clientHeight-window.innerHeight) * .95
+
+    useEffect(() => {
+        if(atBottom) setCounter(prev => prev+1)
+    }, [atBottom])
+
+    const parkItems = parks.slice(0, (counter)*24).map(park => <ParkListItem key={park['id']} park={park} onClickSave={onClickSave} /> )
 
     return(
         <div className="parkContainer">

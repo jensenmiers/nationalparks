@@ -8,13 +8,23 @@ function ParkListItem({park, onClickSave}){
 
     const [isDescriptionHidden, toggleDescriptionHidden] = useState(true)
 
-    const nonCommercialFees = park.entranceFees.filter(feeObj => !feeObj.title.toLowerCase().includes('commerci'))
 
-    const costUnits = nonCommercialFees.length <=1 && Number(nonCommercialFees[0].cost) === 0 ? 0 : Math.floor(findMaxCost(nonCommercialFees)/10)
+    function findCostUnits(parkObj){
+        if (parkObj.entranceFees===[]) return 0
+        const nonCommercialFees = park.entranceFees.filter(feeObj => !feeObj.title.toLowerCase().includes('commerci')) 
+        if (!nonCommercialFees) return 0
+        return nonCommercialFees.length <=1 ? 0 : Math.floor(findMaxCost(nonCommercialFees)/10)
+    }
+
+
+
 
     function findMaxCost(costArr){
-        return costArr.reduce((acc, elem) => Number(elem.cost) > acc ? Number(elem.cost) : acc, 0)
+        if (!costArr) return 0
+        return costArr.reduce((acc, elem) => Number(elem.cost)||0 > acc ? Number(elem.cost)||0 : acc, 0)
     }
+
+    const costUnits = findCostUnits(park)
 
     return(
         <div className='parkCard'>

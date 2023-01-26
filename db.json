@@ -11,7 +11,8 @@
     {
       "id": 1,
       "savedParks": [
-        "BRVB"
+        "BRVB",
+        "BRCA"
       ]
     }
   ],
@@ -315,8 +316,7 @@
           "name": "Bookstore and Park Store"
         }
       ],
-      "review": [
-      ]
+      "review": []
     },
     {
       "id": "buff",
