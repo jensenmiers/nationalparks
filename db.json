@@ -100,8 +100,14 @@
         }
       ],
       "review": [
-        "awesome",
-        "awesome"
+        {
+          "reviewText": "awesome 319PT",
+          "reviewNum": "1"
+        },
+        {
+          "reviewText": "sample 325PT",
+          "reviewNum": "5"
+        }
       ]
     },
     {
@@ -310,7 +316,6 @@
         }
       ],
       "review": [
-        "great"
       ]
     },
     {
@@ -605,6 +610,12 @@
         {
           "id": "43800AD1-D439-40F3-AAB3-9FB651FE45BB",
           "name": "Gift Shop and Souvenirs"
+        }
+      ],
+      "review": [
+        {
+          "reviewText": "sample 320PT ",
+          "reviewNum": "2"
         }
       ]
     },
@@ -2257,6 +2268,9 @@
           "id": "C8F98B28-3C10-41AE-AA99-092B3B398C43",
           "name": "Museum Exhibits"
         }
+      ],
+      "review": [
+        ""
       ]
     },
     {

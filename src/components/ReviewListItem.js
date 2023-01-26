@@ -3,8 +3,10 @@ function ReviewListItem( {review} ) {
 
     return (
         <div>
-            <li>{review} </li>
-            
+            <ul>
+                <li>{`${review.reviewText}  `}</li>    
+                <li>{`Rating: ${review.reviewNum} of 5 `}</li>    
+            </ul>
         </div>
     )
 
