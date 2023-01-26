@@ -49,6 +49,14 @@ code {
   margin: 20px;
 }
 
+.zipSearchBox {
+  border-radius: .3em;
+  border-width: 1.5px;
+  height: 18pt;
+  font-size: 16pt;
+  margin: 20px;
+}
+
 .searchIcon {
   margin: 25px -10px;
   display: inline;
@@ -67,32 +75,74 @@ code {
   flex-grow: 1;
   position: relative;
   border-style: solid;
-  border-color: black;
+  border-width: 1px;
+  border-color:rgb(151, 151, 151);
   max-width: 600px;
+  overflow: hidden;
+  border-radius: .2em;
+  margin: 3px;
 }
 
-.browseImg {
-  border-style: solid;
-  border-color: pink;
-  max-height: 100px;
+.parkImg {
+  /* border-style: solid;
+  border-color: pink; */
+  max-height: 120px;
+  max-width: 150px;
   overflow: hidden;
   display: inline;
   position: absolute;
   right: 0;
+  top: 0;
 }
 
-.browseImg img {
-  max-height: 100px;
+.parkImg img {
+  max-height: 120px;
+  display: inline;
+  overflow:hidden;
 }
 
 .parkContent {
   /* background-color: pink; */
   height: 100px;
   padding: 5px;
-  width: 66%
+  width: 75%;
 }
 
 .parkContent p{
   font-size: 12px;
+  margin-top: 0px;
 }
 
+.parkDescriptionCompact {
+  max-height: 32px;
+  line-height: 16px;
+  overflow: hidden;
+}
+
+.parkDescription {
+  line-height: 16px;
+}
+
+.bookmark {
+  position: absolute;
+  top: -1px;
+  right: 30%;
+  z-index: 100;
+}
+
+.parkCardTitle {
+  max-width: 90%;
+  padding-bottom: 5px;
+}
+
+.parkCardLink {
+  font-size: 12px;
+  position: absolute;
+  bottom: 5px;
+}
+.parkCardCost {
+  font-size: 12px;
+  position: absolute;
+  bottom: 5px;
+  right: 30%
+}
