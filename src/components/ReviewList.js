@@ -7,6 +7,7 @@ function ReviewList ({reviews}) {
 
     return (
         <div>
+            <p>User reviews:</p>
             {reviewList}
         </div>
         
