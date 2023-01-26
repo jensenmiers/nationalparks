@@ -12,13 +12,14 @@ function ParkDetail({ parks, setParks }) {
     
 
     function updateReviewArray(newReview) {
+        console.log('newReview: ', newReview);
         const options = {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                review: park.review ? [...park.review, newReview] : [newReview],
+                review: park.review ? [...park.review, newReview] : [newReview],                 
             })
         }
         fetch(`http://localhost:3001/parks/${park["id"]}`,options)
@@ -31,7 +32,10 @@ function ParkDetail({ parks, setParks }) {
 
     return (
         <div>
-            <h1>{`hello from park details for ${park["id"]}`}</h1>
+            <h1>{`${park["Location Name"]}`}</h1>
+            <h2>{`${park['City']}, ${park['State']}`}</h2>
+            <p>Activities:</p>
+            <p>{`${park['description']}`}</p>
             <ReviewForm setReviewForm={updateReviewArray} />
             <ReviewList reviews={reviews} /> 
             
