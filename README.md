@@ -4,9 +4,7 @@
 Browse, search and learn about what the great U.S outdoors has to offer. For any nature lovers, adventurers, and historians, this app is endless it its exploratory information. Travelers rejoice as well, this app allows you to search the neareast national parks according to zip code.   
 <br>
 
-<iframe src="https://giphy.com/embed/85zj6kXkdaHr08Q983" width="480" height="284" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p>
-<a href="https://giphy.com/gifs/85zj6kXkdaHr08Q983">via GIPHY</a></p>
-
+<div style="width:100%;height:0;padding-bottom:59%;position:relative;"><iframe src="https://giphy.com/embed/85zj6kXkdaHr08Q983" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div><p><a href="https://giphy.com/gifs/85zj6kXkdaHr08Q983">via GIPHY</a></p>
 
 ## User Stories
 As a site user, you can:
