@@ -4,6 +4,11 @@ function ReviewForm({setReviewForm}) {
 
     const [formData,setFormData] = useState('')
 
+    const defaultForm = ''
+
+    const defaultRating = ''
+   
+
     const [ratingNum, setRatingNum] = useState('')
 
     function handleSubmit(e) {
@@ -11,6 +16,8 @@ function ReviewForm({setReviewForm}) {
         setReviewForm({
             reviewText: formData,
             reviewNum: ratingNum})
+        setFormData(defaultForm)
+        setRatingNum(defaultRating)
     }
 
     function handleChange(e) {
@@ -22,14 +29,20 @@ function ReviewForm({setReviewForm}) {
     }
     
     return(
-        <div>
+        <div className='reviewForm'>
         <form onSubmit={handleSubmit} >
+            <h4>Reviews </h4>
+            <label >Post a review: </label>
             <input onChange={handleChange} 
                 value={formData} 
-                type='text' 
+                type='textarea' 
                 name='review' 
-                placeholder='Write a review' />
-    
+                placeholder='write about your experience here'
+                size='100' />
+            <br></br>
+            <br></br>
+            <label >Rate: </label>
+
             <input onChange={handleRating} 
                 value='1'
                 type='radio'
@@ -59,7 +72,10 @@ function ReviewForm({setReviewForm}) {
                 type='radio'
                 name='rate'
                 id='star5'  />
-            <label for='star5'>5</label>
+            <label for='star5'>5 </label>
+            <br></br>
+            <br></br>
+
             <button type='submit'> Add Review </button>
         </form>
         

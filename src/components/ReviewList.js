@@ -5,10 +5,11 @@ function ReviewList ({reviews}) {
 
     const reviewList = reviews.map(review => <ReviewListItem review={review} /> );
 
+    console.log(reviews.length === 0);
     return (
-        <div>
-            <p>User reviews:</p>
-            {reviewList}
+        <div className='reviewList'>
+            <p><u>User reviews:</u></p>
+            {reviews.length === 0 ? <p> Be the first to review this location! </p> : reviewList}
         </div>
         
     )

@@ -11,7 +11,8 @@
     {
       "id": 1,
       "savedParks": [
-        "BRVB"
+        "BRVB",
+        "buff"
       ]
     }
   ],
@@ -101,11 +102,7 @@
       ],
       "review": [
         {
-          "reviewText": "awesome 319PT",
-          "reviewNum": "1"
-        },
-        {
-          "reviewText": "sample 325PT",
+          "reviewText": "I've never been.",
           "reviewNum": "5"
         }
       ]
@@ -316,6 +313,14 @@
         }
       ],
       "review": [
+        {
+          "reviewText": "beautiful hues of orange",
+          "reviewNum": "5"
+        },
+        {
+          "reviewText": "does form resubmit to blank?",
+          "reviewNum": "4"
+        }
       ]
     },
     {
@@ -612,12 +617,7 @@
           "name": "Gift Shop and Souvenirs"
         }
       ],
-      "review": [
-        {
-          "reviewText": "sample 320PT ",
-          "reviewNum": "2"
-        }
-      ]
+      "review": []
     },
     {
       "id": "cali",
@@ -716,6 +716,12 @@
         {
           "id": "C8F98B28-3C10-41AE-AA99-092B3B398C43",
           "name": "Museum Exhibits"
+        }
+      ],
+      "review": [
+        {
+          "reviewText": "Historic!",
+          "reviewNum": "4"
         }
       ]
     },
@@ -2269,9 +2275,7 @@
           "name": "Museum Exhibits"
         }
       ],
-      "review": [
-        ""
-      ]
+      "review": []
     },
     {
       "id": "CARL",
@@ -3586,7 +3590,8 @@
           "id": "467DC8B8-0B7D-436D-A026-80A22358F615",
           "name": "Bookstore and Park Store"
         }
-      ]
+      ],
+      "review": []
     },
     {
       "id": "CHPI",
