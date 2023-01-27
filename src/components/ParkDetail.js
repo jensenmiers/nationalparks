@@ -9,10 +9,6 @@ function ParkDetail({ parks, setParks }) {
     const parkMatch = parks.filter(parkObj => parkObj["id"].toLowerCase() === parkId.toLowerCase())
     const park = parkMatch[0]
 
-    // const parkImgObj1 = park.images[0]
-    // const parkImgObj2 = park.images[1]
-    // const parkImgObj3 = park.images[2]
-    
     const slicedParks = park.images.slice(0,3)
     const parkImagesObj = slicedParks.map((imgObj) => {
         return <img className='detailImg' src={imgObj.url} alt={imgObj.url} />
