@@ -1,70 +1,71 @@
-# Getting Started with Create React App
+# A U.S. National Park Directory Web Application 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## About
+Browse, search and learn about what the great U.S outdoors has to offer. For any nature lovers, adventurers, and historians, this app is endless it its exploratory information. Travelers rejoice as well, this app allows you to search the neareast national parks according to zip code.   
+<br>
 
-## Available Scripts
+![Demo GIF](https://media.giphy.com/media/85zj6kXkdaHr08Q983/giphy.gif)
 
-In the project directory, you can run:
+## User Stories
+As a site user, you can:
+- Browse through the 300+ U.S. National Park Service sites to view content: a picture, short description, state, entry price.
+- Search by site name to filter your browse page
+- Search by activity type to filter sites that match your searched activity
+- Search by your zip code to sort site closest to you
+- Filter the site database by site designation types i.e. "National Park", "Historical Site", "Battlefield" etc.
+- Click on each site from the broswe page to learn more about the site via pictures, a full description, activities and reviews from users of this app
+- For each site, enter a review for future users to view your reviews
+- Bookmark sites from the Browse page into your MyParks page to save sites for further expolration or planning
+- Remove bookmarks from your My Parks page 
 
-### `npm start`
+ <br>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+ ## Data source
+ - This app's data was derived from the [National Park Service API](https://www.nps.gov/subjects/developer/index.htm) 
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+<br>
 
-### `npm test`
+## Technologies
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- ReactJS
 
-### `npm run build`
+- JSON 
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Client-side routing with React Router Dom
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- HTML
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- CSS
 
-### `npm run eject`
+- Bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+<br>
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
+## Deployment
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+This app has not yet been deployed, but stay tuned for updates.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+<br>
 
-### Code Splitting
+## How to install locally on your machine
+1. Fork the repository to your own Github account and clone it down to your local system
+2. Once the repository has been opened in your text editor of choice (VS Code for eaxample), and ensure you have a node package manager installed globablly run the following:
+    - npm install
+    - npm run server
+    - npm start
+    - This will now run the app in the development mode. Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+<br>
 
-### Analyzing the Bundle Size
+## Contributors
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+- Matt Ishida 
+    - <a href="https://github.com/mattIshida/"> Github</a> 
+    - matthew.ishida@gmail.com
+- Jensen Miers 
+    - <a href="https://github.com/jensenmiers"> <b>Github</b></a>
+    - jensenmiers@gmail.com
 
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

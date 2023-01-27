@@ -13,7 +13,8 @@
       "savedParks": [
         "BRVB",
         "buff",
-        "cali"
+        "cali",
+        "chis"
       ]
     }
   ],
@@ -3592,7 +3593,12 @@
           "name": "Bookstore and Park Store"
         }
       ],
-      "review": []
+      "review": [
+        {
+          "reviewText": "Channel Islands was awesome!",
+          "reviewNum": "5"
+        }
+      ]
     },
     {
       "id": "CHPI",
