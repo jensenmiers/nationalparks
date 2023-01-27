@@ -51,7 +51,7 @@ function ParkListItem({ park, onClickSave, userData }){
                     </div>
                 </div>
                 <div className='parkImg'>
-                    <img src={parkImgObj.url} alt={parkImgObj.altText} />
+                    <img src={parkImgObj.url} alt={parkImgObj.title} />
                 </div>
         </div>
     )

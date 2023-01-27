@@ -2,11 +2,11 @@
 function ReviewListItem( {review} ) {
 
     return (
-        <div>
-            <ul>
-                <li>{`${review.reviewText}  `}</li>    
-                <li>{`Rating: ${review.reviewNum} of 5 `}</li>    
-            </ul>
+        <div className='reviewListItem'>
+            {/* <ul> */}
+                <p className='reviewDetailText'> {`${review.reviewText}`} </p> 
+                <p className='reviewDetailText'>{`Rating: ${review.reviewNum} stars `}</p>    
+            {/* </ul> */}
         </div>
     )
 
