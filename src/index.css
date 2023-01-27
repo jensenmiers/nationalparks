@@ -63,7 +63,6 @@ code {
 }
 
 
-
 .parkContainer {
   display: flex;
   flex-wrap: wrap;
@@ -145,4 +144,70 @@ code {
   position: absolute;
   bottom: 5px;
   right: 30%
+}
+.detailPageContainer {
+  display: flex;
+  justify-content: center;
+
+}
+.detailParkCard {
+  flex-grow: 1;
+  position: relative;
+  border-style: solid;
+  border-width: 1px;
+  border-color:rgb(151, 151, 151);
+  max-width: 95%;
+  overflow: hidden;
+  border-radius: .2em;
+  margin: 5px;
+  padding-bottom: 1em;
+}
+
+.detailParkCardInfo {
+  padding-left: 1em;
+  padding-right: 20em;
+}
+
+.reviewCard {
+  position: relative;
+  border-style: solid;
+  border-width: 1px;
+  border-color:rgb(151, 151, 151);
+  max-width: 100%;
+  border-radius: .2em;
+}
+.reviewForm {
+  padding-left: 1em;
+  padding-right: 5em;
+}
+.reviewList {
+  padding-left: 1em;
+  padding-right: 5em;
+  padding-bottom: 1em;
+}
+.reviewListItem {
+  background-color: rgb(218, 217, 217);
+  position: relative;
+  border-style: solid;
+  border-width: 1px;
+  border-color:rgb(151, 151, 151);
+  /* max-width: 100%; */
+  border-radius: 1em;
+}
+.reviewDetailText {
+  padding-left: 1em;
+  font-size: 1em;
+}
+.detailImgContainer {
+  display: flex;
+  
+  justify-content: space-evenly;
+  margin: 10px;
+  padding: 10px;
+}
+
+.detailImg {
+  max-height: 240px;
+  max-width: 300px;
+  position: static;
 }
