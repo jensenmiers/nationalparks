@@ -76,8 +76,9 @@ code {
 .parkContainer {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-
+  justify-content: flex-start;
+  max-width: 1250px;
+  margin: auto;
 }
 
 .parkCard {
@@ -143,6 +144,14 @@ code {
 .parkCardTitle {
   max-width: 90%;
   padding-bottom: 5px;
+}
+.parkCardStateBadge {
+  display: inline;
+  font-size: 12px;
+  margin-left: 5px;
+  position: absolute;
+  bottom: 5px;
+  left: 30%
 }
 
 .parkCardLink {

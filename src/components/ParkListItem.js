@@ -2,12 +2,11 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom'
 import { FaBookmark, FaDollarSign, FaRegBookmark } from 'react-icons/fa';
 
-function ParkListItem({park, onClickSave}){
+function ParkListItem({ park, onClickSave, userData }){
 
     const parkImgObj = park.images[0]
-
     const [isDescriptionHidden, toggleDescriptionHidden] = useState(true)
-
+    const [isSaved, setIsSaved] = useState(userData.savedParks.map(item=>item.toLowerCase()).includes(park.id.toLowerCase()))
 
     function findCostUnits(parkObj){
         if (parkObj.entranceFees===[]) return 0
@@ -15,9 +14,6 @@ function ParkListItem({park, onClickSave}){
         if (!nonCommercialFees) return 0
         return nonCommercialFees.length <=1 ? 0 : Math.floor(findMaxCost(nonCommercialFees)/10)
     }
-
-
-
 
     function findMaxCost(costArr){
         if (!costArr) return 0
@@ -29,18 +25,26 @@ function ParkListItem({park, onClickSave}){
     return(
         <div className='parkCard'>
                 <div className='parkContent'>
-                    <div className='bookmark' onClick={() => onClickSave(park)}>
-                        <FaRegBookmark />
+                    <div className='bookmark' onClick={() => {
+                        onClickSave(park, isSaved)
+                        setIsSaved(prevValue => !prevValue)
+                    }}>
+                        {isSaved ? <FaBookmark /> : <FaRegBookmark />}
                     </div>
                     <div className="parkCardTitle">
                         <strong>{park['Location Name']}</strong>
+                        
                     </div>
+                    
                     <div className={isDescriptionHidden ? "parkDescriptionCompact":"parkDescription"}>                    
                         {/* <p>{`${park.description.split(' ').slice(0,25).join(' ')}...`}</p> */}
                         <p>{park.description}</p>
                     </div>
                     <div className='parkCardLink'>
                         <Link to={`/parks/${park['id']}`} >Read Reviews</Link> 
+                    </div>
+                    <div className="parkCardStateBadge">
+                        {park.State}
                     </div>
                     <div className='parkCardCost'>
                         {!costUnits ? "Free" : Array.from({ length: costUnits }, (v, i) => i).map(()=>"$")}

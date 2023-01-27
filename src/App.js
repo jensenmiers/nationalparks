@@ -28,15 +28,20 @@ function App() {
     .then(setUserData)
   }, [])
 
+  
+  
+
   // handler functions
-  function handleClickSavePark(savedPark){
+  function handleClickSavePark(savedPark, isSaved){
+
+    const arrayBody = isSaved ? userData.savedParks.filter(id=> id !== savedPark.id) : [...userData.savedParks, savedPark.id]
 
     fetch(`${baseURL}/users/${userId}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json"
       },
-      body: JSON.stringify({savedParks: [...userData.savedParks, savedPark['id']]})
+      body: JSON.stringify({savedParks: arrayBody})
     })
     .then(res => res.json())
     .then(setUserData)
@@ -51,10 +56,10 @@ function App() {
           <Home />
         </Route>
         <Route exact path='/parks'>
-          <ParkPage parks={parks} onClickSave={handleClickSavePark} />
+          <ParkPage parks={parks} onClickSave={handleClickSavePark} userData={userData} />
         </Route>
         <Route exact path='/user/:userid'>
-          <MyParks userData={userData} parks={parks}/>
+          <MyParks parks={parks} onClickSave={handleClickSavePark} userData={userData} />
         </Route>
         <Route path='/parks/:parkid'>
           <ParkDetail parks={parks} setParks={setParks}/>
