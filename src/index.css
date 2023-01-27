@@ -49,28 +49,32 @@ code {
   border-radius: .3em;
   border-width: 1.5px;
   height: 18pt;
-  font-size: 16pt;
-  margin: 20px 10px 5px 20px ;
+  width: 20rem;
+  font-size: 12pt;
+  margin: 20px 10px 0px 20px ;
 }
 
 .zipSearchBox {
   border-radius: .3em;
   border-width: 1.5px;
   height: 18pt;
-  font-size: 16pt;
-  margin: 20px 10px 5px 20px ;
+  font-size: 12pt;
+  margin: 10px 10px 5px 20px ;
   max-width: 8em;
 }
 .zipSearchButton {
   height: 18pt;
-  margin-top: 22px;
+  margin-top: 12px;
 }
 
 .searchIcon {
   margin: 25px -10px;
   display: inline;
 }
-
+.zipSearchIcon {
+  margin: 15px -10px;
+  display: inline;
+}
 
 .parkContainer {
   display: flex;
@@ -137,7 +141,6 @@ code {
   position: absolute;
   top: -1px;
   right: 30%;
-  z-index: 100;
 }
 
 .parkCardTitle {
@@ -164,6 +167,40 @@ code {
   bottom: 5px;
   right: 30%
 }
+.typeCheckboxContainer {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 900px;
+  justify-content:flex-start;
+  margin: auto;
+}
+
+.checkboxItem {
+  width: 300px;
+  margin-top: 3px;
+  margin-bottom: 3px; 
+}
+.typeFilterButtonContainer {
+  max-width: 360px;
+  display: flex;
+  margin: auto;
+  margin-top: 10px;
+}
+.typeFilterButton {
+  width:120px;
+  text-align:center;
+}
+
+.typeFilter {
+  margin-top: 15px;
+  margin-bottom: 20px;
+}
+
+.showFilterButtonContainer {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
 .detailPageContainer {
   display: flex;
   justify-content: center;

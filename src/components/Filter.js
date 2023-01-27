@@ -1,23 +1,22 @@
 import { useState } from 'react'
 import Checkbox from './Checkbox'
 
-function Filter({ }){
+function Filter({ parkTypeList, setTypesToDisplay }){
 
-    const parkTypes = ['National Monument', 'National Park']
+    const DEFAULT = Object.fromEntries(parkTypeList.map(arr => [arr[0], true]))
+    const DEFAULTFALSE = Object.fromEntries(parkTypeList.map(arr => [arr[0], false]))
 
-    const [formData, setFormData] = useState({})
+    const [formData, setFormData] = useState(DEFAULT)
+    const [isHidden, setIsHidden] = useState(true)
 
     function updateFormData(e){
         setFormData({...formData, [e.target.name]: e.target.checked})
     }
 
-    // const includedTypes = Object.entries(formData).reduce((acc, elem), {
-    //     if(elem[])
-    // })
-
-    const typeBoxes = parkTypes.map(type => {
+    const typeBoxes = parkTypeList.map(type => {
         return (
-            <Checkbox type={type} 
+            <Checkbox key={type[0]}
+                type={type} 
                 formData={formData} 
                 onChangeCheck={updateFormData} 
             />
@@ -25,9 +24,23 @@ function Filter({ }){
     })
 
     return (
-        <div>
-            {typeBoxes}
-            <button onClick={console.log}>Apply filter</button>
+        <div className="typeFilter">
+            <div className="showFilterButtonContainer"><button onClick={()=>setIsHidden(!isHidden)}>{isHidden ? "Filter by Park Type" : "Hide filter"}</button></div>
+            {isHidden? null : <div><div className="typeCheckboxContainer">{typeBoxes}</div>
+            <div className="typeFilterButtonContainer">
+                <div className="typeFilterButton" ><button onClick={(e)=>{
+                    setFormData(DEFAULTFALSE)
+                    //setTypesToDisplay([])
+                }}>Clear</button></div>
+                <div className="typeFilterButton"><button  onClick={(e)=>{
+                    setFormData(DEFAULT)
+                    //setTypesToDisplay(Object.keys(DEFAULT))
+                }}>Select All</button></div>
+                <div className="typeFilterButton" ><button onClick={()=>setTypesToDisplay(Object.entries(formData).filter(pair => pair[1]).map(pair => pair[0]))}>Apply filter</button></div>
+
+            </div>
+            </div>
+            }
         </div>
     )
 

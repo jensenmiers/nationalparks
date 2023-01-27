@@ -10,7 +10,7 @@ function Search({searchTerm,handleSearch}){
                 value={searchTerm}
                 type='text'
                 id='search'
-                placeholder='Search by park name...'
+                placeholder='Search by park or activity, e.g. "Yellowstone", "climbing"'
                 onChange={(e) => handleSearch(e.target.value)}
             />
         </div>

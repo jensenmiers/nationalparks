@@ -10,8 +10,18 @@ const ZIPAPI="https://api.zippopotam.us/us/"
 function ParkPage({ parks, onClickSave, userData }) {
 
   const [searchTerm, setSearchTerm] = useState('')
-  const [zipSearchTerm, setZipSearchTerm] = useState(0)
+  const [zipSearchTerm, setZipSearchTerm] = useState('')
   const [latLon, setLatLon] = useState({})
+  
+  const parkTypes = parks.reduce((acc, elem) => {
+    if(acc[elem.designation]) return {...acc, [elem.designation]: acc[elem.designation]+1}
+    return {...acc, [elem.designation]: 1}
+  }, {})
+  const parkTypeList = Object.entries(parkTypes).sort((a,b)=> a[1]<b[1] ? 1 : -1)
+  
+  let DEFAULT = Object.keys(parkTypes)
+  const [typesToDisplay, setTypesToDisplay] = useState(DEFAULT)
+
 
   function distToZip(parkObj){
     return haversine(latLon, 
@@ -29,6 +39,7 @@ function ParkPage({ parks, onClickSave, userData }) {
       })
   }
 
+
   const filteredParks = parks.filter(park => {
     return park['Location Name'].toLowerCase().includes(searchTerm.toLowerCase()) ||
     park.activities.map(obj => obj.name? obj.name.toLowerCase() : "").join(', ').includes(searchTerm.toLowerCase())
@@ -36,12 +47,13 @@ function ParkPage({ parks, onClickSave, userData }) {
   .sort((p1, p2) => {
     return latLon.lat ? distToZip(p1) - distToZip(p2) : 0    
   })
+  .filter(park => typesToDisplay===undefined || typesToDisplay.includes(park.designation))
 
   return (
     <div>
-      <Filter />
       <Search searchTerm={searchTerm} handleSearch={setSearchTerm} />
       <ZipSearch zipSearchTerm={zipSearchTerm} handleZipSearch={setZipSearchTerm} handleSubmitZip={handleSubmitZip}/>
+      <Filter parkTypeList={parkTypeList} setTypesToDisplay={setTypesToDisplay}/>
       <ParkList parks={filteredParks} onClickSave={onClickSave} userData={userData} />
       
     </div>

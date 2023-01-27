@@ -4,10 +4,8 @@ import { useEffect, useState } from 'react'
 import ParkList from './ParkList'
  
 function MyParks({ userData, parks, onClickSave }){
-    console.log('parks', parks)
 
     const {userid} = useParams()
-    console.log('userid', userid)
     const [userDataAlt, setUserDataAlt] = useState({})
     useEffect(()=> {
         fetch(`http://localhost:3001/users/${userid}`)
@@ -19,9 +17,8 @@ function MyParks({ userData, parks, onClickSave }){
     }, [])
     
     const savedParkIds = userDataAlt.savedParks? userDataAlt.savedParks.map(id => id.toLowerCase()) : []
-    //console.log(savedParkIds)
     const userParks = parks.filter(parkObj => savedParkIds.includes(parkObj["id"].toLowerCase()))
-    // const userParks = parks
+
     return (
         <div>
             <h1>{`Hello from user ${userid}'s MyParks Page`}</h1>
