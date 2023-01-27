@@ -41,12 +41,16 @@ code {
   justify-content: center;
 }
 
+.searchContainer:last-child {
+  height: 12pt
+}
+
 .searchBox {
   border-radius: .3em;
   border-width: 1.5px;
   height: 18pt;
   font-size: 16pt;
-  margin: 20px;
+  margin: 20px 10px 5px 20px ;
 }
 
 .zipSearchBox {
@@ -54,7 +58,12 @@ code {
   border-width: 1.5px;
   height: 18pt;
   font-size: 16pt;
-  margin: 20px;
+  margin: 20px 10px 5px 20px ;
+  max-width: 8em;
+}
+.zipSearchButton {
+  height: 18pt;
+  margin-top: 22px;
 }
 
 .searchIcon {
@@ -66,8 +75,9 @@ code {
 .parkContainer {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-
+  justify-content: flex-start;
+  max-width: 1250px;
+  margin: auto;
 }
 
 .parkCard {
@@ -104,16 +114,17 @@ code {
   /* background-color: pink; */
   height: 100px;
   padding: 5px;
-  width: 75%;
+  max-width: 75%;
 }
 
 .parkContent p{
   font-size: 12px;
   margin-top: 0px;
+  margin-right: 10px;
 }
 
 .parkDescriptionCompact {
-  max-height: 32px;
+  max-height: 48px;
   line-height: 16px;
   overflow: hidden;
 }
@@ -132,6 +143,14 @@ code {
 .parkCardTitle {
   max-width: 90%;
   padding-bottom: 5px;
+}
+.parkCardStateBadge {
+  display: inline;
+  font-size: 12px;
+  margin-left: 5px;
+  position: absolute;
+  bottom: 5px;
+  left: 30%
 }
 
 .parkCardLink {

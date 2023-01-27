@@ -1,31 +1,31 @@
 import { useParams } from 'react-router-dom'
 import ParkListItem from './ParkListItem'
 import { useEffect, useState } from 'react'
+import ParkList from './ParkList'
  
-function MyParks({ userData, parks }){
+function MyParks({ userData, parks, onClickSave }){
     console.log('parks', parks)
 
+    const {userid} = useParams()
+    console.log('userid', userid)
     const [userDataAlt, setUserDataAlt] = useState({})
     useEffect(()=> {
-        fetch('http://localhost:3001/users/1')
+        fetch(`http://localhost:3001/users/${userid}`)
         .then(res => res.json())
-        .then(console.log)
+        .then((json)=> {
+            console.log(json)
+            setUserDataAlt(json)
+        })
     }, [])
     
-
-    const params = useParams()
-    console.log('userData', userData)
-
-    //console.log(parks)
-    const savedParkIds = userData.savedParks.map(id => id.toLowerCase())
+    const savedParkIds = userDataAlt.savedParks? userDataAlt.savedParks.map(id => id.toLowerCase()) : []
+    //console.log(savedParkIds)
     const userParks = parks.filter(parkObj => savedParkIds.includes(parkObj["id"].toLowerCase()))
-    const userParkList = userParks.map(parkObj => <ParkListItem key={parkObj["id"]} park={parkObj}/>)
-    //console.log('userParks', userParks)
-    console.log('savedParkIds', savedParkIds)
+    // const userParks = parks
     return (
         <div>
-            <h1>{`Hello from user ${params.userid}'s MyParks Page`}</h1>
-            {userParkList}
+            <h1>{`Hello from user ${userid}'s MyParks Page`}</h1>
+            <ParkList parks={userParks} onClickSave={onClickSave} userData={userDataAlt}/>
         </div>
     )
 }

@@ -2,17 +2,40 @@ import React, { useEffect, useState } from 'react';
 import ParkListItem from './ParkListItem';
 
 
-function ParkList({parks, onClickSave }){
+function ParkList({ parks, onClickSave, userData }){
 
 
-    const parkItems = parks.slice(0,24).map(park => <ParkListItem key={park['id']} park={park} onClickSave={onClickSave} /> )
+    // if(parks!==[] && parks !== undefined) {
+    //     //console.log(parks)
+    //     console.log(parks.reduce((acc, elem)=>{
+    //         if(!(acc.includes(elem.designation))) acc.push(elem.designation)
+    //     }, ['starter']))
+    // }
 
-    console.log("window height", window.innerHeight)
-    // const atBottom = window.scrollY/window.innerHeight > .9
+    const [counter, setCounter] = useState(0)
+    const [scrollPosition, setScrollPosition] = useState(0);
     
-    // useEffect(()=>{
-    //     setIsAtBottom(window.scrollY/window.innerHeight > .9)
-    // }, [window.scrollY])
+    const handleScroll = () => {
+        const position = window.pageYOffset;
+        setScrollPosition(position);
+    };
+
+    useEffect(() => {
+        window.addEventListener('scroll', handleScroll, { passive: true });
+
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
+
+    const atBottom = scrollPosition >= (document.body.clientHeight-window.innerHeight) * .95
+
+    useEffect(() => {
+        if(atBottom) setCounter(prev => prev+1)
+    }, [atBottom])
+
+
+    const parkItems = parks.slice(0, (counter)*24).map(park => <ParkListItem key={park['id']} park={park} onClickSave={onClickSave} userData={userData}/> )
 
     return(
         <div className="parkContainer">
