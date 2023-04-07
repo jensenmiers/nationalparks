@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom'
-import { FaBookmark, FaDollarSign, FaRegBookmark } from 'react-icons/fa';
+import { FaBookmark, FaRegBookmark } from 'react-icons/fa';
 
 function ParkListItem({ park, onClickSave, userData }){
 
@@ -16,8 +16,13 @@ function ParkListItem({ park, onClickSave, userData }){
     }
 
     function findMaxCost(costArr){
-        if (!costArr) return 0
-        return costArr.reduce((acc, elem) => Number(elem.cost)||0 > acc ? Number(elem.cost)||0 : acc, 0)
+        if (!costArr || costArr.length === 0) return 0
+        return Number(costArr[0]?.cost)||0
+        //return costArr.reduce((acc, elem) => Number(elem.cost)||0 > acc ? Number(elem.cost)||0 : acc, 0)
+    }
+
+    function fallbackImage(e){
+        //e.target.src = park.images[0]?.url || ""
     }
 
     const costUnits = findCostUnits(park)
@@ -51,7 +56,7 @@ function ParkListItem({ park, onClickSave, userData }){
                     </div>
                 </div>
                 <div className='parkImg'>
-                    <img src={parkImgObj.url} alt={parkImgObj.title} />
+                    <img onError={fallbackImage}src={parkImgObj.url} alt={parkImgObj.title} />
                 </div>
         </div>
     )

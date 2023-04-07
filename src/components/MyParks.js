@@ -1,5 +1,4 @@
 import { useParams } from 'react-router-dom'
-import ParkListItem from './ParkListItem'
 import { useEffect, useState } from 'react'
 import ParkList from './ParkList'
  

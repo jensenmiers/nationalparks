@@ -47,7 +47,6 @@ function App() {
     .then(setUserData)
   }
 
-  console.log('hello from app')
   return (
     <div className="App">
       <NavBar userId={userId} />

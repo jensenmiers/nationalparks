@@ -1,5 +1,4 @@
 import { useParams } from 'react-router-dom';
-import React,{useState} from 'react';
 import ReviewForm from './ReviewForm';
 import ReviewList from './ReviewList';
 
@@ -19,7 +18,7 @@ function ParkDetail({ parks, setParks }) {
     })
 
     const parkActivityObj = park.activities
-    const activityList = parkActivityObj.map(activity => ` ${activity.name}`) .join(', ')
+    const activityList = parkActivityObj.map(activity => ` ${activity.name}`).join(', ')
 
     function updateReviewArray(newReview) {
         console.log('newReview: ', newReview);

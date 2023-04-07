@@ -1,4 +1,4 @@
-import React,{useEffect, useState} from 'react';
+import {useState} from 'react';
 import ParkList from './ParkList';
 import Search from './Search';
 import ZipSearch from './ZipSearch';
