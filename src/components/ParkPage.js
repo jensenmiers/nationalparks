@@ -1,25 +1,28 @@
-import {useState} from 'react';
+import {useState, useContext} from 'react';
 import ParkList from './ParkList';
 import Search from './Search';
 import ZipSearch from './ZipSearch';
 import haversine from 'haversine-distance'
 import Filter from './Filter'
+import { ParkContext } from '../context/ParkProvider';
 
 const ZIPAPI="https://api.zippopotam.us/us/"
 
-function ParkPage({ parks, onClickSave, userData }) {
+function ParkPage({ onClickSave, userData }) {
+
+  const [parks, setParks] = useContext(ParkContext)
 
   const [searchTerm, setSearchTerm] = useState('')
   const [zipSearchTerm, setZipSearchTerm] = useState('')
   const [latLon, setLatLon] = useState({})
-  
-  const parkTypes = parks.reduce((acc, elem) => {
+  console.log('parks', parks)
+  const parkTypes = parks?.reduce((acc, elem) => {
     if(acc[elem.designation]) return {...acc, [elem.designation]: acc[elem.designation]+1}
     return {...acc, [elem.designation]: 1}
   }, {})
   const parkTypeList = Object.entries(parkTypes).sort((a,b)=> a[1]<b[1] ? 1 : -1)
 
-  const activityTypes = parks.reduce((acc, elem) => {
+  const activityTypes = parks?.reduce((acc, elem) => {
     elem.activities?.forEach(act => {
       if(acc[act.name]) acc[act.name] = acc[act.name]+1
       else acc[act.name] = 1
@@ -49,6 +52,7 @@ function ParkPage({ parks, onClickSave, userData }) {
       })
   }
 
+  console.log("typesToDisplay", typesToDisplay)
 
   const filteredParks = parks.filter(park => {
     return park['Location Name'].toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -63,8 +67,8 @@ function ParkPage({ parks, onClickSave, userData }) {
     }
     return park
   })
-  .filter(park => typesToDisplay===undefined || typesToDisplay.includes(park.designation))
-  .filter(park => activitiesToDisplay===undefined || activitiesToDisplay.find(act => park.activities.map(actObj=>actObj.name).includes(act)))
+  // .filter(park => typesToDisplay.length == 0 || typesToDisplay.includes(park.designation))
+  //.filter(park => activitiesToDisplay.length==0 || activitiesToDisplay.find(act => park.activities.map(actObj=>actObj.name).includes(act)))
 
   return (
     <div>

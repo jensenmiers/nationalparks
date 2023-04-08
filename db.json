@@ -6443,7 +6443,25 @@
           "title": "Entrance"
         }
       ],
-      "states": "WV"
+      "states": "WV",
+      "review": [
+        {
+          "reviewText": "great place!",
+          "reviewNum": ""
+        },
+        {
+          "reviewText": "",
+          "reviewNum": ""
+        },
+        {
+          "reviewText": "another great review!!!",
+          "reviewNum": ""
+        },
+        {
+          "reviewText": "fantastic!",
+          "reviewNum": ""
+        }
+      ]
     },
     {
       "id": "bowa",
@@ -7729,7 +7747,13 @@
           "title": "Entrance Fee"
         }
       ],
-      "states": "AR"
+      "states": "AR",
+      "review": [
+        {
+          "reviewText": "I love this place",
+          "reviewNum": ""
+        }
+      ]
     },
     {
       "id": "cabr",

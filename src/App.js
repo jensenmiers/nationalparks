@@ -1,5 +1,5 @@
 // import './App.css';
-import React,{useState, useEffect} from 'react';
+import React,{useState, useEffect, useContext} from 'react';
 import { Route, Switch } from 'react-router-dom'
 import NavBar from './components/NavBar'
 import Home from './components/Home'
@@ -7,12 +7,13 @@ import ParkPage from './components/ParkPage'
 import MyParks from './components/MyParks'
 import ParkDetail from './components/ParkDetail'
 import About from './components/About'
+import { ParkContext } from './context/ParkProvider'
 
 function App() {
 
   const parksUrl = 'http://localhost:3001/parks'
   const baseURL = 'http://localhost:3001'
-  const [parks,setParks] = useState([])
+  const [parks,setParks] = useContext(ParkContext)
   const [userId, setUserId] = useState(1)
   const [userData, setUserData]=useState({})
 
@@ -55,13 +56,13 @@ function App() {
           <Home />
         </Route>
         <Route exact path='/parks'>
-          <ParkPage parks={parks} onClickSave={handleClickSavePark} userData={userData} />
+          <ParkPage onClickSave={handleClickSavePark} userData={userData} />
         </Route>
         <Route exact path='/user/:userid'>
-          <MyParks parks={parks} onClickSave={handleClickSavePark} userData={userData} />
+          <MyParks onClickSave={handleClickSavePark} userData={userData} />
         </Route>
         <Route path='/parks/:parkid'>
-          <ParkDetail parks={parks} setParks={setParks}/>
+          <ParkDetail />
         </Route>
         <Route path='/about'>
           <About />

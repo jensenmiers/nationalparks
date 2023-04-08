@@ -1,10 +1,12 @@
 import { useParams } from 'react-router-dom'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useContext } from 'react'
 import ParkList from './ParkList'
+import { ParkContext } from '../context/ParkProvider'
  
-function MyParks({ userData, parks, onClickSave }){
+function MyParks({ userData, onClickSave }){
 
     const {userid} = useParams()
+    const [parks, _] = useContext(ParkContext)
     const [userDataAlt, setUserDataAlt] = useState({})
     useEffect(()=> {
         fetch(`http://localhost:3001/users/${userid}`)

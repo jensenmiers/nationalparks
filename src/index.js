@@ -4,13 +4,15 @@ import './index.css';
 import App from './App';
 // import reportWebVitals from './reportWebVitals';
 import { BrowserRouter as Router } from 'react-router-dom'
-
+import { ParkProvider } from './context/ParkProvider'
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <Router>
-    <App />
+    <ParkProvider>
+      <App />
+    </ParkProvider>
   </Router>
 );
 

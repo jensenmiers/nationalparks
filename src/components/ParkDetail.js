@@ -2,12 +2,14 @@ import { useParams } from 'react-router-dom';
 import ReviewForm from './ReviewForm';
 import ReviewList from './ReviewList';
 import FeeCard from './FeeCard'
-import {useState, useEffect} from 'react'
+import {useState, useEffect, useContext} from 'react'
+import { ParkContext } from '../context/ParkProvider';
 
-function ParkDetail({ parks, setParks }) {
+function ParkDetail() {
 
     const parkId = useParams().parkid
     const [park, setPark] = useState({})
+    const [parks, setParks] = useContext(ParkContext)
 
     useEffect(()=>{
         fetch(`http://localhost:3001/parks/${parkId}`)
@@ -35,8 +37,10 @@ function ParkDetail({ parks, setParks }) {
         }
         fetch(`http://localhost:3001/parks/${park["id"]}`,options)
             .then(res => res.json())
-            .then(jsresponse => setParks(parks.map(park => park.id === parkId ? jsresponse : park 
-            ))) 
+            .then(jsresponse => {
+                setParks(parks.map(park => park.id === parkId ? jsresponse : park ))
+                setPark(jsresponse)
+            }) 
     }
     const reviews = park?.review || []
 
