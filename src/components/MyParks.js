@@ -21,7 +21,7 @@ function MyParks({ userData, onClickSave }){
 
     return (
         <div>
-            <h1>{`My Saved Parks`}</h1>
+            <h1 style={{textAlign: 'center'}}>{`My Saved Parks`}</h1>
             <ParkList parks={userParks} onClickSave={onClickSave} userData={userDataAlt}/>
         </div>
     )
