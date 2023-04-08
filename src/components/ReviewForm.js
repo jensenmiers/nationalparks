@@ -48,31 +48,26 @@ function ReviewForm({setReviewForm}) {
                 type='radio'
                 name='rate'
                 id='star1'  />1</label>
-            {/* <label for='star1'>1</label> */}
             <label><input onChange={handleRating} 
                 value='2'
                 type='radio'
                 name='rate'
                 id='star2'  />2</label>
-            {/* <label for='star2'>2</label> */}
             <label><input onChange={handleRating} 
                 value='3'
                 type='radio'
                 name='rate'
                 id='star3'  />3</label>
-            {/* <label for='star3'>3</label> */}
             <label><input onChange={handleRating} 
                 value='4'
                 type='radio'
                 name='rate'
                 id='star4'  />4</label>
-            {/* <label for='star4'>4</label> */}
             <label><input onChange={handleRating} 
                 value='5'
                 type='radio'
                 name='rate'
                 id='star5'  />5</label>
-            {/* <label for='star5'>5 </label> */}
             <br></br>
             <br></br>
 

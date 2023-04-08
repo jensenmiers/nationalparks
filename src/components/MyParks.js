@@ -10,7 +10,6 @@ function MyParks({ userData, parks, onClickSave }){
         fetch(`http://localhost:3001/users/${userid}`)
         .then(res => res.json())
         .then((json)=> {
-            console.log(json)
             setUserDataAlt(json)
         })
     }, [])

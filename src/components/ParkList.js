@@ -4,14 +4,6 @@ import ParkListItem from './ParkListItem';
 
 function ParkList({ parks, onClickSave, userData }){
 
-
-    // if(parks!==[] && parks !== undefined) {
-    //     //console.log(parks)
-    //     console.log(parks.reduce((acc, elem)=>{
-    //         if(!(acc.includes(elem.designation))) acc.push(elem.designation)
-    //     }, ['starter']))
-    // }
-
     const [counter, setCounter] = useState(0)
     const [scrollPosition, setScrollPosition] = useState(0);
     
