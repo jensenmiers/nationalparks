@@ -5,18 +5,26 @@ import FeeCard from './FeeCard'
 import {useState, useEffect, useContext} from 'react'
 import { ParkContext } from '../context/ParkProvider';
 import Map from './Map';
+import { FaBookmark, FaRegBookmark } from 'react-icons/fa';
 
-function ParkDetail() {
+function ParkDetail({ userData, onClickSave }) {
 
     const parkId = useParams().parkid
     const [park, setPark] = useState({})
+    const [isSaved, setIsSaved] = useState(userData.savedParks?.map(item=>item.toLowerCase()).includes(parkId.toLowerCase()))
     const [parks, setParks] = useContext(ParkContext)
+
+    useEffect(()=>{
+        setIsSaved(userData.savedParks?.map(item=>item.toLowerCase()).includes(parkId.toLowerCase()))
+    }, [userData])
 
     useEffect(()=>{
         fetch(`http://localhost:3001/parks/${parkId}`)
         .then(res => res.json())
         .then(setPark)
     },[])
+
+
 
     const slicedParks = park?.images?.slice(0,3)
     const parkImagesObj = slicedParks?.map((imgObj, i) => {
@@ -49,7 +57,15 @@ function ParkDetail() {
         <div className='detailPageContainer'>
             <div className='detailParkCard' >
                 <div className='detailParkCardInfo'>
-                    <h1>{`${park["Location Name"]}`}</h1>
+                    <div className='detailParkCardHeader'>
+                        <h1>{`${park["Location Name"]}`}</h1>
+                        <div className='saveButtonDetail' onClick={() => {
+                            onClickSave(park, isSaved)
+                            setIsSaved(prevValue => !prevValue)
+                        }}>
+                            {isSaved==undefined? null : isSaved ? <button className='savedButton'>Saved!</button> : <button className='addButton'>Add to MyParks</button>}
+                        </div>
+                    </div>
                     <div className='detailImgContainer' >
                         {parkImagesObj}
                         {/* <img className='detailImg' src={parkImgObj1.url} alt={parkImgObj1.altText} />

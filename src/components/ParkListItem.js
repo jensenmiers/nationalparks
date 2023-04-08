@@ -12,19 +12,6 @@ function ParkListItem({ park, onClickSave, userData }){
         if (!parkObj?.entranceFees) return 0
         const cost = parkObj.entranceFees[0]?.cost
         return Math.ceil(cost/10)
-        //const nonCommercialFees = park.entranceFees.filter(feeObj => !feeObj.title.toLowerCase().includes('commerci')) 
-        //if (!nonCommercialFees) return 0
-        //return nonCommercialFees.length <=1 ? 0 : Math.ceil(findMaxCost(nonCommercialFees)/10)
-    }
-
-    function findMaxCost(costArr){
-        if (!costArr || costArr.length === 0) return 0
-        return Number(costArr[0]?.cost)||0
-        //return costArr.reduce((acc, elem) => Number(elem.cost)||0 > acc ? Number(elem.cost)||0 : acc, 0)
-    }
-
-    function fallbackImage(e){
-        //e.target.src = park.images[0]?.url || ""
     }
 
     const costUnits = findCostUnits(park)
@@ -43,11 +30,10 @@ function ParkListItem({ park, onClickSave, userData }){
                     </div>
                     
                     <div className={isDescriptionHidden ? "parkDescriptionCompact":"parkDescription"}>                    
-                        {/* <p>{`${park.description.split(' ').slice(0,25).join(' ')}...`}</p> */}
                         <p>{park.description}</p>
                     </div>
                     <div className='parkCardLink'>
-                        <Link to={`/parks/${park['id']}`} >Read Reviews</Link> 
+                        <Link to={`/parks/${park['id']}`} >See details</Link> 
                     </div>
                     <div className="parkCardStateBadge">
                         {park.State}
@@ -59,7 +45,7 @@ function ParkListItem({ park, onClickSave, userData }){
                     </div>
                 </div>
                 <div className='parkImg'>
-                    <img onError={fallbackImage}src={parkImgObj.url} alt={parkImgObj.title} />
+                    <img src={parkImgObj.url} alt={parkImgObj.title} />
                 </div>
         </div>
     )

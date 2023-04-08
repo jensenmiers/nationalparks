@@ -44,11 +44,14 @@ function ParkPage({ onClickSave, userData }) {
   }
 
   function handleSubmitZip(zip){
-    fetch(`${ZIPAPI}/${zipSearchTerm}`)
-      .then(res=> res.json())
-      .then(json => {
-        setLatLon({lat: Number(json.places[0].latitude), lon: Number(json.places[0].longitude)})
-      })
+    if(!zip) setLatLon({lat: null, lon: null})
+    else {
+      fetch(`${ZIPAPI}/${zipSearchTerm}`)
+        .then(res=> res.json())
+        .then(json => {
+          setLatLon({lat: Number(json.places[0].latitude), lon: Number(json.places[0].longitude)})
+        })
+    }
   }
 
   const filteredParks = parks.filter(park => {
@@ -56,7 +59,8 @@ function ParkPage({ onClickSave, userData }) {
     park?.activities?.map(obj => obj.name? obj.name.toLowerCase() : "").join(', ').includes(searchTerm.toLowerCase())
   })
   ?.sort((p1, p2) => {
-    return latLon.lat ? distToZip(p1) - distToZip(p2) : 0    
+    return latLon.lat ? distToZip(p1) - distToZip(p2) : (p1['Location Name'] && p2['Location Name'] ? p1['Location Name'].localeCompare(p2['Location Name']) : 0 )
+    // return latLon.lat ? distToZip(p1) - distToZip(p2) : 0    
   })
   ?.map(park => {
     if(latLon.lat){
@@ -73,7 +77,7 @@ function ParkPage({ onClickSave, userData }) {
       <ZipSearch zipSearchTerm={zipSearchTerm} handleZipSearch={setZipSearchTerm} handleSubmitZip={handleSubmitZip}/>
       <Filter parkTypeList={parkTypeList} setTypesToDisplay={setTypesToDisplay} buttonLabel={'Park Type'}/>
       <Filter parkTypeList={activitiesList} setTypesToDisplay={setActivitiesToDisplay} buttonLabel={'Activity'}/>
-      {filteredParks.length > 0 ? <ParkList parks={filteredParks} onClickSave={onClickSave} userData={userData} /> : <h2>No sites match your criteria.</h2>}
+      {filteredParks.length == 0 && parks.length > 0 ?<h2>No sites match your criteria.</h2> : <ParkList parks={filteredParks} onClickSave={onClickSave} userData={userData} /> }
     </div>
   )   
 }
