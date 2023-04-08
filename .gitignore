@@ -10,6 +10,8 @@
 
 # production
 /build
+dataPull.js
+db-old.json
 
 # misc
 .DS_Store
