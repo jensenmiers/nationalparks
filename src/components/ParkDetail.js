@@ -1,27 +1,29 @@
 import { useParams } from 'react-router-dom';
 import ReviewForm from './ReviewForm';
 import ReviewList from './ReviewList';
+import FeeCard from './FeeCard'
+import {useState, useEffect} from 'react'
 
 function ParkDetail({ parks, setParks }) {
 
     const parkId = useParams().parkid
-    const parkMatch = parks.filter(parkObj => parkObj["id"].toLowerCase() === parkId.toLowerCase())
-    const park = parkMatch[0]
+    const [park, setPark] = useState({})
 
-    // const parkImgObj1 = park.images[0]
-    // const parkImgObj2 = park.images[1]
-    // const parkImgObj3 = park.images[2]
+    useEffect(()=>{
+        fetch(`http://localhost:3001/parks/${parkId}`)
+        .then(res => res.json())
+        .then(setPark)
+    },[])
     
-    const slicedParks = park.images.slice(0,3)
-    const parkImagesObj = slicedParks.map((imgObj) => {
-        return <img className='detailImg' src={imgObj.url} alt={imgObj.url} />
+    const slicedParks = park?.images?.slice(0,3)
+    const parkImagesObj = slicedParks?.map((imgObj, i) => {
+        return <img className='detailImg' src={imgObj.url} alt={imgObj.url} key={`${park.id}-${i}`} />
     })
 
-    const parkActivityObj = park.activities
-    const activityList = parkActivityObj.map(activity => ` ${activity.name}`).join(', ')
+    const parkActivityObj = park?.activities
+    const activityList = parkActivityObj?.map(activity => ` ${activity.name}`).join(', ')
 
     function updateReviewArray(newReview) {
-        console.log('newReview: ', newReview);
         const options = {
             method: 'PATCH',
             headers: {
@@ -36,7 +38,7 @@ function ParkDetail({ parks, setParks }) {
             .then(jsresponse => setParks(parks.map(park => park.id === parkId ? jsresponse : park 
             ))) 
     }
-    const reviews = park.review || []
+    const reviews = park?.review || []
 
     return (
         <div className='detailPageContainer'>
@@ -57,7 +59,10 @@ function ParkDetail({ parks, setParks }) {
                         <ReviewForm setReviewForm={updateReviewArray} />
                         <br></br>
                         <ReviewList reviews={reviews} /> 
-                    </div>   
+                    </div>
+                    {park?.entranceFees?.map((feeObj,index) => {
+                        return <FeeCard key={`${park.id}-fee-${index}`} feeObj={feeObj}/>
+                    })}   
                          
                 </div>
                 
