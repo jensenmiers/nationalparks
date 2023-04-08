@@ -21,7 +21,7 @@ function MyParks({ userData, onClickSave }){
 
     return (
         <div>
-            <h1>{`Hello from user ${userid}'s MyParks Page`}</h1>
+            <h1>{`My Saved Parks`}</h1>
             <ParkList parks={userParks} onClickSave={onClickSave} userData={userDataAlt}/>
         </div>
     )

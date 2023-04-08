@@ -65,8 +65,8 @@ function ParkPage({ onClickSave, userData }) {
     }
     return park
   })
-  // .filter(park => typesToDisplay.length == 0 || typesToDisplay.includes(park.designation))
-  //.filter(park => activitiesToDisplay.length==0 || activitiesToDisplay.find(act => park.activities.map(actObj=>actObj.name).includes(act)))
+  .filter(park => typesToDisplay.length == 0 || typesToDisplay.includes(park.designation))
+  .filter(park => activitiesToDisplay.length==0 || activitiesToDisplay.find(act => park.activities.map(actObj=>actObj.name).includes(act)))
 
   return (
     <div>
