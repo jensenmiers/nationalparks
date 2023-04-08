@@ -4,15 +4,17 @@ import { FaBookmark, FaRegBookmark } from 'react-icons/fa';
 
 function ParkListItem({ park, onClickSave, userData }){
 
-    const parkImgObj = park.images[0]
+    const parkImgObj = park.images?.length >0 ? park.images[0] : {url: 'none', title: 'image not found'}
     const [isDescriptionHidden, toggleDescriptionHidden] = useState(true)
     const [isSaved, setIsSaved] = useState(userData.savedParks.map(item=>item.toLowerCase()).includes(park.id.toLowerCase()))
 
     function findCostUnits(parkObj){
-        if (parkObj.entranceFees===[]) return 0
-        const nonCommercialFees = park.entranceFees.filter(feeObj => !feeObj.title.toLowerCase().includes('commerci')) 
-        if (!nonCommercialFees) return 0
-        return nonCommercialFees.length <=1 ? 0 : Math.ceil(findMaxCost(nonCommercialFees)/10)
+        if (!parkObj?.entranceFees) return 0
+        const cost = parkObj.entranceFees[0]?.cost
+        return Math.ceil(cost/10)
+        //const nonCommercialFees = park.entranceFees.filter(feeObj => !feeObj.title.toLowerCase().includes('commerci')) 
+        //if (!nonCommercialFees) return 0
+        //return nonCommercialFees.length <=1 ? 0 : Math.ceil(findMaxCost(nonCommercialFees)/10)
     }
 
     function findMaxCost(costArr){
