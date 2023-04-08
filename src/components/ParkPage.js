@@ -18,10 +18,21 @@ function ParkPage({ parks, onClickSave, userData }) {
     return {...acc, [elem.designation]: 1}
   }, {})
   const parkTypeList = Object.entries(parkTypes).sort((a,b)=> a[1]<b[1] ? 1 : -1)
-  
+
+  const activityTypes = parks.reduce((acc, elem) => {
+    elem.activities?.forEach(act => {
+      if(acc[act.name]) acc[act.name] = acc[act.name]+1
+      else acc[act.name] = 1
+    })
+    return acc
+  }, {})
+  const activitiesList = Object.entries(activityTypes).sort((a,b)=> a[1]<b[1] ? 1 : -1)
+  console.log('activityTypes', activitiesList)
+
   let DEFAULT = Object.keys(parkTypes)
   const [typesToDisplay, setTypesToDisplay] = useState(DEFAULT)
-
+  let DEFAULT_ACTIVTY = Object.keys(activityTypes)
+  const [activitiesToDisplay, setActivitiesToDisplay] = useState(DEFAULT_ACTIVTY)
 
   function distToZip(parkObj){
     return haversine(latLon, 
@@ -48,12 +59,14 @@ function ParkPage({ parks, onClickSave, userData }) {
     return latLon.lat ? distToZip(p1) - distToZip(p2) : 0    
   })
   .filter(park => typesToDisplay===undefined || typesToDisplay.includes(park.designation))
+  .filter(park => activitiesToDisplay===undefined || activitiesToDisplay.find(act => park.activities.map(actObj=>actObj.name).includes(act)))
 
   return (
     <div>
       <Search searchTerm={searchTerm} handleSearch={setSearchTerm} />
       <ZipSearch zipSearchTerm={zipSearchTerm} handleZipSearch={setZipSearchTerm} handleSubmitZip={handleSubmitZip}/>
-      <Filter parkTypeList={parkTypeList} setTypesToDisplay={setTypesToDisplay}/>
+      <Filter parkTypeList={parkTypeList} setTypesToDisplay={setTypesToDisplay} buttonLabel={'Park Type'}/>
+      <Filter parkTypeList={activitiesList} setTypesToDisplay={setActivitiesToDisplay} buttonLabel={'Activity'}/>
       <ParkList parks={filteredParks} onClickSave={onClickSave} userData={userData} />
       
     </div>

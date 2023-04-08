@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import Checkbox from './Checkbox'
 
-function Filter({ parkTypeList, setTypesToDisplay }){
+function Filter({ parkTypeList, setTypesToDisplay, buttonLabel }){
 
     const DEFAULT = Object.fromEntries(parkTypeList.map(arr => [arr[0], true]))
     const DEFAULTFALSE = Object.fromEntries(parkTypeList.map(arr => [arr[0], false]))
@@ -25,7 +25,7 @@ function Filter({ parkTypeList, setTypesToDisplay }){
 
     return (
         <div className="typeFilter">
-            <div className="showFilterButtonContainer"><button onClick={()=>setIsHidden(!isHidden)}>{isHidden ? "Filter by Park Type" : "Hide filter"}</button></div>
+            <div className="showFilterButtonContainer"><button className="filterButton" onClick={()=>setIsHidden(!isHidden)}>{isHidden ? `Filter by ${buttonLabel}` : "Hide filter"}</button></div>
             {isHidden? null : <div><div className="typeCheckboxContainer">{typeBoxes}</div>
             <div className="typeFilterButtonContainer">
                 <div className="typeFilterButton" ><button onClick={(e)=>{
