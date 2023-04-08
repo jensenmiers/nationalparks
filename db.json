@@ -12,7 +12,10 @@
       "id": 1,
       "savedParks": [
         "buff",
-        "cali"
+        "acad",
+        "afam",
+        "adam",
+        "abli"
       ]
     }
   ],
@@ -540,7 +543,13 @@
           "title": "No Entrance Fee"
         }
       ],
-      "states": "DC"
+      "states": "DC",
+      "review": [
+        {
+          "reviewText": "fantastic!",
+          "reviewNum": "5"
+        }
+      ]
     },
     {
       "id": "afbg",
@@ -1542,7 +1551,8 @@
           "title": "Per Person Fee"
         }
       ],
-      "states": "PA" },
+      "states": "PA"
+    },
     {
       "id": "amch",
       "City": "Granada",
@@ -11323,27 +11333,129 @@
           "name": "Bookstore and Park Store"
         }
       ],
+      "images": [
+        {
+          "credit": "Tim Hauf, timhaufphotography.com",
+          "title": "Inspiration Point by Tim Hauf",
+          "altText": "Steep, rugged ocean cliffs extending in an island chain.",
+          "caption": "Inspiration Point, Anacapa Island: One of the most spectacular views in the park can be found from Inspiration Point. Looking to the west, one may see Middle and West Anacapa, with Santa Cruz Island in the distance.",
+          "url": "https://www.nps.gov/common/uploads/structured_data/8DE774D1-CB22-37F2-D826E3F0A73D303A.jpg"
+        },
+        {
+          "credit": "Tim Hauf, timhaufphotography.com",
+          "title": "Arch Point by Tim Hauf",
+          "altText": "Yellow flowers in foreground extending out along a rocky coastline to a natural arch.",
+          "caption": "Arch Point, Santa Barbara Island: With winter rains, the coreopsis emerges from summer's dormancy with light green foliage and bright yellow daisy-like flowers",
+          "url": "https://www.nps.gov/common/uploads/structured_data/8E0CA65D-0CF8-87C6-DE4B4AA7AAC02DEA.jpg"
+        },
+        {
+          "credit": "Tim Hauf, timhaufphotography.com",
+          "title": "Torrey Pines by Tim Hauf",
+          "altText": "Pine tree high on a ridge overlooking a bay with blue water and white sand beach.",
+          "caption": "Torrey Pines, Santa Rosa Island: Torrey pines occur naturally in only two locations throughout the world--on the cool, fog drenched northeastern slopes of Bechers Bay and just north of San Diego.",
+          "url": "https://www.nps.gov/common/uploads/structured_data/8DF30150-D91A-D761-4A5064BA77154E2C.jpg"
+        },
+        {
+          "credit": "Tim Hauf, timhaufphotography.com",
+          "title": "Point Bennet by Tim Hauf",
+          "altText": "Brown seals and sea lions on white sand beach with blue water and partly cloudy sky.",
+          "caption": "Point Bennet, San Miguel Island: One of the greatest concentrations of wildlife in the world occurs on San Miguel with over 100,000 pinnipeds gathering to breed, pup, and rest.",
+          "url": "https://www.nps.gov/common/uploads/structured_data/8E1AE30B-DBDB-C193-C1023F2C7591ABA0.jpg"
+        },
+        {
+          "credit": "Tim Hauf, timhaufphotography.com",
+          "title": "Island Fox by Tim Hauf",
+          "altText": "Rust and grey colored fox in green grass.",
+          "caption": "Island Fox, Santa Cruz Island: Thousands of years of isolation in a unique island environment has resulted in the development of the endemic island fox, a dwarf form of the mainland gray fox.",
+          "url": "https://www.nps.gov/common/uploads/structured_data/8E003516-C693-8617-61EC2F2E06BA1E45.jpg"
+        }
+      ],
+      "entranceFees": [
+        {
+          "cost": "0.00",
+          "description": "There is no entrance fee to visit the Channel Islands National Park.",
+          "title": "Entrance"
+        }
+      ],
+      "states": "CA",
       "review": []
     },
     {
-      "id": "CHPI",
+      "id": "chpi",
+      "City": "Mount Pleasant",
+      "State": "SC",
+      "Zip Code": "29464",
       "Location Name": "Charles Pinckney National Historic Site",
-      "Address": "1214 Middle Street",
-      "City": "Sullivan's Island",
-      "State": "South Carolina",
-      "Zip Code": 29482,
-      "Phone Number": "(843) 881-5516",
-      "Fax Number": "(843) 881-7070",
-      "Latitude": 32.758321,
-      "Longitude": -79.856317,
-      "Location": {
-        "coordinates": [
-          -79.856317,
-          32.758321
-        ],
-        "type": "Point"
-      },
-      "parkCode": "chpi",
+      "Latitude": "32.84577392",
+      "Longitude": "-79.82487582",
+      "description": "Charles Pinckney was a principal author and signer of the United States Constitution, and went on to be a political leader in South Carolina for over 40 years. The park preserves Snee Farm, one of his plantation properties, where visitors can learn about the politician's influences on Charleston, the African people he enslaved, plantation operations, and the legacy of Pinckney's life.",
+      "designation": "National Historic Site",
+      "activities": [
+        {
+          "id": "1DFACD97-1B9C-4F5A-80F2-05593604799E",
+          "name": "Food"
+        },
+        {
+          "id": "C6D3230A-2CEA-4AFE-BFF3-DC1E2C2C4BB4",
+          "name": "Picnicking"
+        },
+        {
+          "id": "B33DC9B6-0B7D-4322-BAD7-A13A34C584A3",
+          "name": "Guided Tours"
+        },
+        {
+          "id": "A0631906-9672-4583-91DE-113B93DB6B6E",
+          "name": "Self-Guided Tours - Walking"
+        },
+        {
+          "id": "42FD78B9-2B90-4AA9-BC43-F10E9FEA8B5A",
+          "name": "Hands-On"
+        },
+        {
+          "id": "31F88DA6-696F-441F-89CF-D7B1415C4CB9",
+          "name": "Citizen Science"
+        },
+        {
+          "id": "9456A40A-AF75-4AD3-8BE1-79C4A7DBEDFC",
+          "name": "Volunteer Vacation"
+        },
+        {
+          "id": "BFF8C027-7C8F-480B-A5F8-CD8CE490BFBA",
+          "name": "Hiking"
+        },
+        {
+          "id": "45261C0A-00D8-4C27-A1F8-029F933A0D34",
+          "name": "Front-Country Hiking"
+        },
+        {
+          "id": "DF4A35E0-7983-4A3E-BC47-F37B872B0F25",
+          "name": "Junior Ranger Program"
+        },
+        {
+          "id": "0B685688-3405-4E2A-ABBA-E3069492EC50",
+          "name": "Wildlife Watching"
+        },
+        {
+          "id": "5A2C91D1-50EC-4B24-8BED-A2E11A1892DF",
+          "name": "Birdwatching"
+        },
+        {
+          "id": "0C0D142F-06B5-4BE1-8B44-491B90F93DEB",
+          "name": "Park Film"
+        },
+        {
+          "id": "C8F98B28-3C10-41AE-AA99-092B3B398C43",
+          "name": "Museum Exhibits"
+        },
+        {
+          "id": "24380E3F-AD9D-4E38-BF13-C8EEB21893E7",
+          "name": "Shopping"
+        },
+        {
+          "id": "467DC8B8-0B7D-436D-A026-80A22358F615",
+          "name": "Bookstore and Park Store"
+        }
+      ],
       "images": [
         {
           "credit": "NPS Photo",
@@ -16919,7 +17031,8 @@
           "title": "Entrance fees vary site by site"
         }
       ],
-      "states": "NM,TX"},
+      "states": "NM,TX"
+    },
     {
       "id": "elte",
       "City": "Santa Fe",
@@ -18158,7 +18271,8 @@
           "title": "First State Fees"
         }
       ],
-      "states": "DE,PA"},
+      "states": "DE,PA"
+    },
     {
       "id": "flni",
       "City": "Stoystown",
@@ -18945,7 +19059,8 @@
           "title": "Park Entrance"
         }
       ],
-      "states": "DC"},
+      "states": "DC"
+    },
     {
       "id": "fofo",
       "City": "Oxon Hill",
@@ -29477,7 +29592,8 @@
           "title": "Ice Age Floods National Geologic Trail"
         }
       ],
-      "states": "WA,OR,ID,MT"},
+      "states": "WA,OR,ID,MT"
+    },
     {
       "id": "iatr",
       "City": "Cross Plains",
@@ -36205,7 +36321,8 @@
           "title": "Fees"
         }
       ],
-      "states": "VA"},
+      "states": "VA"
+    },
     {
       "id": "maac",
       "City": "Madawaska",

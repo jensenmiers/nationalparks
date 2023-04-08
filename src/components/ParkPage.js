@@ -11,7 +11,6 @@ const ZIPAPI="https://api.zippopotam.us/us/"
 function ParkPage({ onClickSave, userData }) {
 
   const [parks, setParks] = useContext(ParkContext)
-
   const [searchTerm, setSearchTerm] = useState('')
   const [zipSearchTerm, setZipSearchTerm] = useState('')
   const [latLon, setLatLon] = useState({})
@@ -54,19 +53,19 @@ function ParkPage({ onClickSave, userData }) {
 
   const filteredParks = parks.filter(park => {
     return park['Location Name'].toLowerCase().includes(searchTerm.toLowerCase()) ||
-    park.activities.map(obj => obj.name? obj.name.toLowerCase() : "").join(', ').includes(searchTerm.toLowerCase())
+    park?.activities?.map(obj => obj.name? obj.name.toLowerCase() : "").join(', ').includes(searchTerm.toLowerCase())
   })
-  .sort((p1, p2) => {
+  ?.sort((p1, p2) => {
     return latLon.lat ? distToZip(p1) - distToZip(p2) : 0    
   })
-  .map(park => {
+  ?.map(park => {
     if(latLon.lat){
       return {...park, distance: distToZip(park)}
     }
     return park
   })
-  .filter(park => typesToDisplay.length == 0 || typesToDisplay.includes(park.designation))
-  .filter(park => activitiesToDisplay.length==0 || activitiesToDisplay.find(act => park.activities.map(actObj=>actObj.name).includes(act)))
+  ?.filter(park => typesToDisplay.length == 0 || typesToDisplay.includes(park.designation))
+  ?.filter(park => activitiesToDisplay.length==0 || activitiesToDisplay.find(act => park.activities.map(actObj=>actObj.name).includes(act)))
 
   return (
     <div>
@@ -74,7 +73,7 @@ function ParkPage({ onClickSave, userData }) {
       <ZipSearch zipSearchTerm={zipSearchTerm} handleZipSearch={setZipSearchTerm} handleSubmitZip={handleSubmitZip}/>
       <Filter parkTypeList={parkTypeList} setTypesToDisplay={setTypesToDisplay} buttonLabel={'Park Type'}/>
       <Filter parkTypeList={activitiesList} setTypesToDisplay={setActivitiesToDisplay} buttonLabel={'Activity'}/>
-      <ParkList parks={filteredParks} onClickSave={onClickSave} userData={userData} />
+      {filteredParks.length > 0 ? <ParkList parks={filteredParks} onClickSave={onClickSave} userData={userData} /> : <h2>No sites match your criteria.</h2>}
     </div>
   )   
 }
