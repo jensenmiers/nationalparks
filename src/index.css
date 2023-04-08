@@ -271,3 +271,26 @@ code {
 .map-container {
   height: 400px;
   }
+
+.saveButtonDetail button{
+  display: inline;
+  font-size: 1rem;
+  min-width: 10rem;
+  padding: .4rem;
+  margin-left: 2rem;
+}
+
+
+.addButton {
+  background-color: #ffaa00;
+}
+
+.savedButton {
+  background-color: green;
+  color: #ffffff;  
+}
+
+.detailParkCardHeader {
+  display: flex;
+  align-items: center;
+}

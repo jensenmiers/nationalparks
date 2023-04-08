@@ -62,7 +62,7 @@ function App() {
           <MyParks onClickSave={handleClickSavePark} userData={userData} />
         </Route>
         <Route path='/parks/:parkid'>
-          <ParkDetail />
+          <ParkDetail onClickSave={handleClickSavePark} userData={userData}/>
         </Route>
         <Route path='/about'>
           <About />
