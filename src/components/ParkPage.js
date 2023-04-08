@@ -15,7 +15,7 @@ function ParkPage({ onClickSave, userData }) {
   const [searchTerm, setSearchTerm] = useState('')
   const [zipSearchTerm, setZipSearchTerm] = useState('')
   const [latLon, setLatLon] = useState({})
-  console.log('parks', parks)
+
   const parkTypes = parks?.reduce((acc, elem) => {
     if(acc[elem.designation]) return {...acc, [elem.designation]: acc[elem.designation]+1}
     return {...acc, [elem.designation]: 1}
@@ -51,8 +51,6 @@ function ParkPage({ onClickSave, userData }) {
         setLatLon({lat: Number(json.places[0].latitude), lon: Number(json.places[0].longitude)})
       })
   }
-
-  console.log("typesToDisplay", typesToDisplay)
 
   const filteredParks = parks.filter(park => {
     return park['Location Name'].toLowerCase().includes(searchTerm.toLowerCase()) ||

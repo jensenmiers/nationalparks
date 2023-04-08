@@ -27,13 +27,8 @@ function ParkList({ parks, onClickSave, userData }){
         if(atBottom) setCounter(prev => prev+1)
     }, [atBottom])
 
-    console.log('atBottom', atBottom)
-    console.log('parklist', parks)
 
     const parkItems = parks.slice(0, (counter)*24).map(park => <ParkListItem key={park['id']} park={park} onClickSave={onClickSave} userData={userData}/> )
-    console.log('counter', counter)
-    console.log(parks.slice(0, (counter)*24))
-    console.log(parkItems)
     return(
         <div className="parkContainer">
             {parkItems}

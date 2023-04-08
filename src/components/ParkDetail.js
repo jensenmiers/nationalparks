@@ -4,6 +4,7 @@ import ReviewList from './ReviewList';
 import FeeCard from './FeeCard'
 import {useState, useEffect, useContext} from 'react'
 import { ParkContext } from '../context/ParkProvider';
+import Map from './Map';
 
 function ParkDetail() {
 
@@ -16,7 +17,7 @@ function ParkDetail() {
         .then(res => res.json())
         .then(setPark)
     },[])
-    
+
     const slicedParks = park?.images?.slice(0,3)
     const parkImagesObj = slicedParks?.map((imgObj, i) => {
         return <img className='detailImg' src={imgObj.url} alt={imgObj.url} key={`${park.id}-${i}`} />
@@ -55,6 +56,8 @@ function ParkDetail() {
                         <img className='detailImg' src={parkImgObj2.url} alt={parkImgObj2.altText} />
                         <img className='detailImg' src={parkImgObj3.url} alt={parkImgObj3.altText} /> */}
                     </div>
+                    {park.Latitude && park.Longitude ? <Map parkLat={park.Latitude} parkLng={park.Longitude}/> : null}
+
                     <p><b>Location: </b>{`${park['City']}, ${park['State']}`}</p>
                     <p> <b>Site Type:</b> {`${park['designation']}`} </p>
                     <p> <b>Description:</b> {`${park['description']}`} </p>
@@ -67,7 +70,6 @@ function ParkDetail() {
                     {park?.entranceFees?.map((feeObj,index) => {
                         return <FeeCard key={`${park.id}-fee-${index}`} feeObj={feeObj}/>
                     })}   
-                         
                 </div>
                 
             </div>

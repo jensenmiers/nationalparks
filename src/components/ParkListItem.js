@@ -12,7 +12,7 @@ function ParkListItem({ park, onClickSave, userData }){
         if (parkObj.entranceFees===[]) return 0
         const nonCommercialFees = park.entranceFees.filter(feeObj => !feeObj.title.toLowerCase().includes('commerci')) 
         if (!nonCommercialFees) return 0
-        return nonCommercialFees.length <=1 ? 0 : Math.floor(findMaxCost(nonCommercialFees)/10)
+        return nonCommercialFees.length <=1 ? 0 : Math.ceil(findMaxCost(nonCommercialFees)/10)
     }
 
     function findMaxCost(costArr){

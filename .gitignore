@@ -12,6 +12,7 @@
 /build
 dataPull.js
 db-old.json
+MapboxToken.js
 
 # misc
 .DS_Store

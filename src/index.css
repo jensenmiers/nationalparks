@@ -267,3 +267,7 @@ code {
   max-width: 300px;
   position: static;
 }
+
+.map-container {
+  height: 400px;
+  }
