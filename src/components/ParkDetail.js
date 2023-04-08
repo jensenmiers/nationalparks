@@ -1,24 +1,32 @@
 import { useParams } from 'react-router-dom';
-import React,{useState} from 'react';
 import ReviewForm from './ReviewForm';
 import ReviewList from './ReviewList';
+import FeeCard from './FeeCard'
+import {useState, useEffect, useContext} from 'react'
+import { ParkContext } from '../context/ParkProvider';
+import Map from './Map';
 
-function ParkDetail({ parks, setParks }) {
+function ParkDetail() {
 
     const parkId = useParams().parkid
-    const parkMatch = parks.filter(parkObj => parkObj["id"].toLowerCase() === parkId.toLowerCase())
-    const park = parkMatch[0]
+    const [park, setPark] = useState({})
+    const [parks, setParks] = useContext(ParkContext)
 
-    const slicedParks = park.images.slice(0,3)
-    const parkImagesObj = slicedParks.map((imgObj) => {
-        return <img className='detailImg' src={imgObj.url} alt={imgObj.url} />
+    useEffect(()=>{
+        fetch(`http://localhost:3001/parks/${parkId}`)
+        .then(res => res.json())
+        .then(setPark)
+    },[])
+
+    const slicedParks = park?.images?.slice(0,3)
+    const parkImagesObj = slicedParks?.map((imgObj, i) => {
+        return <img className='detailImg' src={imgObj.url} alt={imgObj.url} key={`${park.id}-${i}`} />
     })
 
-    const parkActivityObj = park.activities
-    const activityList = parkActivityObj.map(activity => ` ${activity.name}`) .join(', ')
+    const parkActivityObj = park?.activities
+    const activityList = parkActivityObj?.map(activity => ` ${activity.name}`).join(', ')
 
     function updateReviewArray(newReview) {
-        console.log('newReview: ', newReview);
         const options = {
             method: 'PATCH',
             headers: {
@@ -30,10 +38,12 @@ function ParkDetail({ parks, setParks }) {
         }
         fetch(`http://localhost:3001/parks/${park["id"]}`,options)
             .then(res => res.json())
-            .then(jsresponse => setParks(parks.map(park => park.id === parkId ? jsresponse : park 
-            ))) 
+            .then(jsresponse => {
+                setParks(parks.map(park => park.id === parkId ? jsresponse : park ))
+                setPark(jsresponse)
+            }) 
     }
-    const reviews = park.review || []
+    const reviews = park?.review || []
 
     return (
         <div className='detailPageContainer'>
@@ -46,6 +56,8 @@ function ParkDetail({ parks, setParks }) {
                         <img className='detailImg' src={parkImgObj2.url} alt={parkImgObj2.altText} />
                         <img className='detailImg' src={parkImgObj3.url} alt={parkImgObj3.altText} /> */}
                     </div>
+                    {park.Latitude && park.Longitude ? <Map parkLat={park.Latitude} parkLng={park.Longitude}/> : null}
+
                     <p><b>Location: </b>{`${park['City']}, ${park['State']}`}</p>
                     <p> <b>Site Type:</b> {`${park['designation']}`} </p>
                     <p> <b>Description:</b> {`${park['description']}`} </p>
@@ -54,8 +66,10 @@ function ParkDetail({ parks, setParks }) {
                         <ReviewForm setReviewForm={updateReviewArray} />
                         <br></br>
                         <ReviewList reviews={reviews} /> 
-                    </div>   
-                         
+                    </div>
+                    {park?.entranceFees?.map((feeObj,index) => {
+                        return <FeeCard key={`${park.id}-fee-${index}`} feeObj={feeObj}/>
+                    })}   
                 </div>
                 
             </div>

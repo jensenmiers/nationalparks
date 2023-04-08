@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom'
-import { FaBookmark, FaDollarSign, FaRegBookmark } from 'react-icons/fa';
+import { FaBookmark, FaRegBookmark } from 'react-icons/fa';
 
 function ParkListItem({ park, onClickSave, userData }){
 
@@ -12,12 +12,17 @@ function ParkListItem({ park, onClickSave, userData }){
         if (parkObj.entranceFees===[]) return 0
         const nonCommercialFees = park.entranceFees.filter(feeObj => !feeObj.title.toLowerCase().includes('commerci')) 
         if (!nonCommercialFees) return 0
-        return nonCommercialFees.length <=1 ? 0 : Math.floor(findMaxCost(nonCommercialFees)/10)
+        return nonCommercialFees.length <=1 ? 0 : Math.ceil(findMaxCost(nonCommercialFees)/10)
     }
 
     function findMaxCost(costArr){
-        if (!costArr) return 0
-        return costArr.reduce((acc, elem) => Number(elem.cost)||0 > acc ? Number(elem.cost)||0 : acc, 0)
+        if (!costArr || costArr.length === 0) return 0
+        return Number(costArr[0]?.cost)||0
+        //return costArr.reduce((acc, elem) => Number(elem.cost)||0 > acc ? Number(elem.cost)||0 : acc, 0)
+    }
+
+    function fallbackImage(e){
+        //e.target.src = park.images[0]?.url || ""
     }
 
     const costUnits = findCostUnits(park)
@@ -33,7 +38,6 @@ function ParkListItem({ park, onClickSave, userData }){
                     </div>
                     <div className="parkCardTitle">
                         <strong>{park['Location Name']}</strong>
-                        
                     </div>
                     
                     <div className={isDescriptionHidden ? "parkDescriptionCompact":"parkDescription"}>                    
@@ -45,13 +49,15 @@ function ParkListItem({ park, onClickSave, userData }){
                     </div>
                     <div className="parkCardStateBadge">
                         {park.State}
+                                                {park.distance !==undefined ? <div style={{display: 'inline', padding: '1em'}}>{`(${Math.round(park.distance/1609)} mi.)`}</div>: null}
+
                     </div>
                     <div className='parkCardCost'>
                         {!costUnits ? "Free" : Array.from({ length: costUnits }, (v, i) => i).map(()=>"$")}
                     </div>
                 </div>
                 <div className='parkImg'>
-                    <img src={parkImgObj.url} alt={parkImgObj.title} />
+                    <img onError={fallbackImage}src={parkImgObj.url} alt={parkImgObj.title} />
                 </div>
         </div>
     )
