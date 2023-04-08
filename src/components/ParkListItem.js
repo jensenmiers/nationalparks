@@ -38,7 +38,6 @@ function ParkListItem({ park, onClickSave, userData }){
                     </div>
                     <div className="parkCardTitle">
                         <strong>{park['Location Name']}</strong>
-                        
                     </div>
                     
                     <div className={isDescriptionHidden ? "parkDescriptionCompact":"parkDescription"}>                    
@@ -50,6 +49,8 @@ function ParkListItem({ park, onClickSave, userData }){
                     </div>
                     <div className="parkCardStateBadge">
                         {park.State}
+                                                {park.distance !==undefined ? <div style={{display: 'inline', padding: '1em'}}>{`(${Math.round(park.distance/1609)} mi.)`}</div>: null}
+
                     </div>
                     <div className='parkCardCost'>
                         {!costUnits ? "Free" : Array.from({ length: costUnits }, (v, i) => i).map(()=>"$")}

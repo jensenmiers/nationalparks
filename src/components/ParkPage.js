@@ -27,7 +27,6 @@ function ParkPage({ parks, onClickSave, userData }) {
     return acc
   }, {})
   const activitiesList = Object.entries(activityTypes).sort((a,b)=> a[1]<b[1] ? 1 : -1)
-  console.log('activityTypes', activitiesList)
 
   let DEFAULT = Object.keys(parkTypes)
   const [typesToDisplay, setTypesToDisplay] = useState(DEFAULT)
@@ -58,6 +57,12 @@ function ParkPage({ parks, onClickSave, userData }) {
   .sort((p1, p2) => {
     return latLon.lat ? distToZip(p1) - distToZip(p2) : 0    
   })
+  .map(park => {
+    if(latLon.lat){
+      return {...park, distance: distToZip(park)}
+    }
+    return park
+  })
   .filter(park => typesToDisplay===undefined || typesToDisplay.includes(park.designation))
   .filter(park => activitiesToDisplay===undefined || activitiesToDisplay.find(act => park.activities.map(actObj=>actObj.name).includes(act)))
 
@@ -68,7 +73,6 @@ function ParkPage({ parks, onClickSave, userData }) {
       <Filter parkTypeList={parkTypeList} setTypesToDisplay={setTypesToDisplay} buttonLabel={'Park Type'}/>
       <Filter parkTypeList={activitiesList} setTypesToDisplay={setActivitiesToDisplay} buttonLabel={'Activity'}/>
       <ParkList parks={filteredParks} onClickSave={onClickSave} userData={userData} />
-      
     </div>
   )   
 }
