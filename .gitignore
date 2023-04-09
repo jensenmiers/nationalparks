@@ -13,6 +13,7 @@
 dataPull.js
 db-old.json
 MapboxToken.js
+.env
 
 # misc
 .DS_Store

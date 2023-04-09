@@ -6,6 +6,7 @@ import {useState, useEffect, useContext} from 'react'
 import { ParkContext } from '../context/ParkProvider';
 import Map from './Map';
 import { FaBookmark, FaRegBookmark } from 'react-icons/fa';
+import baseURI from './BaseURI';
 
 function ParkDetail({ userData, onClickSave }) {
 
@@ -19,7 +20,7 @@ function ParkDetail({ userData, onClickSave }) {
     }, [userData])
 
     useEffect(()=>{
-        fetch(`http://localhost:3001/parks/${parkId}`)
+        fetch(`${baseURI}/parks/${parkId}`)
         .then(res => res.json())
         .then(setPark)
     },[])
