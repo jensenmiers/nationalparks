@@ -45,7 +45,7 @@ function ParkDetail({ userData, onClickSave }) {
                 review: park.review ? [...park.review, newReview] : [newReview],                 
             })
         }
-        fetch(`http://localhost:3001/parks/${park["id"]}`,options)
+        fetch(`${baseURI}/parks/${park["id"]}`,options)
             .then(res => res.json())
             .then(jsresponse => {
                 setParks(parks.map(park => park.id === parkId ? jsresponse : park ))
