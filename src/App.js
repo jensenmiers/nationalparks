@@ -8,11 +8,11 @@ import MyParks from './components/MyParks'
 import ParkDetail from './components/ParkDetail'
 import About from './components/About'
 import { ParkContext } from './context/ParkProvider'
+import baseURI from './components/BaseURI';
 
 function App() {
-
-  const parksUrl = 'http://localhost:3001/parks'
-  const baseURL = 'http://localhost:3001'
+  const parksUrl = `${baseURI}/parks`
+  const baseURL = baseURI
   const [parks,setParks] = useContext(ParkContext)
   const [userId, setUserId] = useState(1)
   const [userData, setUserData]=useState({})

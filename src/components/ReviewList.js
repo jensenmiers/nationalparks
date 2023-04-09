@@ -10,10 +10,7 @@ function ReviewList ({reviews}) {
             <p><u>User reviews:</u></p>
             {reviews.length === 0 ? <p> Be the first to review this location! </p> : reviewList}
         </div>
-        
     )
-
 }
-
 
 export default ReviewList;
