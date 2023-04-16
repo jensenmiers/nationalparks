@@ -9,6 +9,8 @@ import ParkDetail from './components/ParkDetail'
 import About from './components/About'
 import { ParkContext } from './context/ParkProvider'
 import baseURI from './components/BaseURI';
+import { PuffLoader } from 'react-spinners';
+import Loading from './components/Loading';
 
 function App() {
   const parksUrl = `${baseURI}/parks`
@@ -16,21 +18,22 @@ function App() {
   const [parks,setParks] = useContext(ParkContext)
   const [userId, setUserId] = useState(1)
   const [userData, setUserData]=useState({})
+  const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
+    setIsLoading(true)
     fetch(parksUrl)
      .then(res => res.json())
-     .then(setParks)
+     .then((data)=>{
+        setParks(data)
+        setIsLoading(false)
+    })
+    .then(
+      fetch(`${baseURL}/users/${userId}`)
+      .then(res => res.json())
+      .then(setUserData)
+    )
   }, [] )
-
-  useEffect(()=> {
-    fetch(`${baseURL}/users/${userId}`)
-    .then(res => res.json())
-    .then(setUserData)
-  }, [])
-
-  console.log(parks)
-  
 
   // handler functions
   function handleClickSavePark(savedPark, isSaved){
@@ -56,13 +59,15 @@ function App() {
           <Home />
         </Route>
         <Route exact path='/parks'>
-          <ParkPage onClickSave={handleClickSavePark} userData={userData} />
+          {isLoading ? <Loading/> :
+            <ParkPage onClickSave={handleClickSavePark} userData={userData} />
+          }
         </Route>
         <Route exact path='/user/:userid'>
-          <MyParks onClickSave={handleClickSavePark} userData={userData} />
+            <MyParks onClickSave={handleClickSavePark} userData={userData} />
         </Route>
         <Route path='/parks/:parkid'>
-          <ParkDetail onClickSave={handleClickSavePark} userData={userData}/>
+            <ParkDetail onClickSave={handleClickSavePark} userData={userData}/>
         </Route>
         <Route path='/about'>
           <About />
