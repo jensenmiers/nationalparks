@@ -9,7 +9,6 @@ import { ParkContext } from '../context/ParkProvider';
 const ZIPAPI="https://api.zippopotam.us/us/"
 
 function ParkPage({ onClickSave, userData }) {
-
   const [parks, setParks] = useContext(ParkContext)
   const [searchTerm, setSearchTerm] = useState('')
   const [zipSearchTerm, setZipSearchTerm] = useState('')
@@ -71,7 +70,7 @@ function ParkPage({ onClickSave, userData }) {
   ?.filter(park => typesToDisplay.length == 0 || typesToDisplay.includes(park.designation))
   ?.filter(park => activitiesToDisplay.length==0 || activitiesToDisplay.find(act => park.activities.map(actObj=>actObj.name).includes(act)))
 
-  return (
+ return (
     <div>
       <Search searchTerm={searchTerm} handleSearch={setSearchTerm} />
       <ZipSearch zipSearchTerm={zipSearchTerm} handleZipSearch={setZipSearchTerm} handleSubmitZip={handleSubmitZip}/>

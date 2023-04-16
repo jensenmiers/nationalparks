@@ -29,7 +29,7 @@ function App() {
     .then(setUserData)
   }, [])
 
-  
+  console.log(parks)
   
 
   // handler functions

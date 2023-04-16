@@ -80,7 +80,7 @@ code {
 .parkContainer {
   display: flex;
   flex-wrap: wrap;
-  justify-content: flex-start;
+  justify-content: start;
   max-width: 1250px;
   margin: auto;
 }
@@ -97,6 +97,7 @@ code {
   margin: 3px;
 }
 
+
 .parkImg {
   /* border-style: solid;
   border-color: pink; */
@@ -111,7 +112,6 @@ code {
 
 .parkImg img {
   max-height: 120px;
-  display: inline;
   overflow:hidden;
 }
 
@@ -295,3 +295,33 @@ code {
   display: flex;
   align-items: center;
 }
+
+
+@media (max-width:1250px) {
+  .parkContainer {
+    justify-content: center;
+  }
+
+  }
+  @media (max-width:600px) {
+    .parkContainer {
+      justify-content: center;
+    }
+    .parkImg {
+      display: block;
+      position: inherit;
+      margin-bottom: 35px;
+      margin-right: auto;
+      margin-left: auto;
+      margin-top: 10px;
+      text-align: center;
+    }
+    
+    .parkContent {
+      max-width: inherit;
+      height: inherit;
+    }
+    .bookmark {
+      right: 5%
+    }
+    }
