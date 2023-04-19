@@ -5,7 +5,7 @@ import { FaBookmark, FaRegBookmark } from 'react-icons/fa';
 function ParkListItem({ park, onClickSave, userData }){
     const parkImgObj = park.images?.length >0 ? park.images[0] : {url: 'none', title: 'image not found'}
     const [isDescriptionHidden, toggleDescriptionHidden] = useState(true)
-    const [isSaved, setIsSaved] = useState(userData.savedParks.map(item=>item.toLowerCase()).includes(park.id.toLowerCase()))
+    const [isSaved, setIsSaved] = useState(userData.savedParks?.map(item=>item.toLowerCase()).includes(park.id.toLowerCase()))
 
     function findCostUnits(parkObj){
         if (!parkObj?.entranceFees) return 0
