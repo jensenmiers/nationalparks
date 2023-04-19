@@ -7,6 +7,7 @@ import { ParkContext } from '../context/ParkProvider';
 import Map from './Map';
 import { FaBookmark, FaRegBookmark } from 'react-icons/fa';
 import baseURI from './BaseURI';
+import Loading from './Loading';
 
 function ParkDetail({ userData, onClickSave }) {
 
@@ -54,6 +55,7 @@ function ParkDetail({ userData, onClickSave }) {
     }
     const reviews = park?.review || []
 
+    if(park['Location Name']==undefined) return <Loading/>
     return (
         <div className='detailPageContainer'>
             <div className='detailParkCard' >
