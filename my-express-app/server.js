@@ -1,17 +1,26 @@
 //server.js
 const express = require('express');
-const sqlite3 = require('sqlite3').verbose();
+const mongoose = require('mongoose')
+const Reviews = require('./models/Review');
+const Users = require('./models/User');
+const Parks = require('./models/Park')
+
+
+
 const app = express();
 const port = 3000;
 
 // Middleware to parse JSON bodies
 app.use(express.json());
 
-// Connect to SQLite database
-const db = new sqlite3.Database('./database.db', (err) => {
-    if (err) {
-        console.error('Error connecting to sqlite3 database' + err.message);
-    } else {
-        console.log('Connected to sqlite3 database.')
-    }
+// connect to MongoDB
+mongoose.connect('mongodb://localhost:27017/mydatabase', {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+});
+
+const db = mongoose.connection;
+db.on('error', console.error.bind(console, 'MongoDB connection error:'))
+db.once('open', () => {
+    console.log('Connected to MongoDB')
 });
