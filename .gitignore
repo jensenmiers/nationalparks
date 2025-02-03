@@ -25,3 +25,6 @@ MapboxToken.js
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+my-express-app/.env
+my-express-app/node_modules

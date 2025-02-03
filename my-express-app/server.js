@@ -1,26 +1,32 @@
 //server.js
 const express = require('express');
-const mongoose = require('mongoose')
+require('dotenv').config(); // load environment variables from .env file
+
+const connectDB = require('./database');
 const Reviews = require('./models/Review');
 const Users = require('./models/User');
 const Parks = require('./models/Park')
 
-
-
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 // Middleware to parse JSON bodies
 app.use(express.json());
 
 // connect to MongoDB
-mongoose.connect('mongodb://localhost:27017/mydatabase', {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
+connectDB();
+
+// Routes
+// app.use('/api/parks', require('./routes/parks'));
+// app.use('/api/users', require('./routes/users'));
+// app.use('/api/reviews', require('./routes/reviews'));
+
+// default route
+app.get('/', (req, res) => {
+    res.send('MongoDB connected with Express! Welcome to the National Parks API');
 });
 
-const db = mongoose.connection;
-db.on('error', console.error.bind(console, 'MongoDB connection error:'))
-db.once('open', () => {
-    console.log('Connected to MongoDB')
+// start the server
+app.listen(port, () => {
+    console.log(`🚀 Server running at http://localhost:${port}`);
 });

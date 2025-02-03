@@ -19,6 +19,13 @@ const entranceFeeSchema = new mongoose.Schema({
     title: String
 });
 
+const reviewSchema = new mongoose.Schema({
+    userId: { type: Number, required: true },
+    parkId: { type: String, required: true },
+    text: { type: String, required: true },
+});
+
+
 const parkSchema = new mongoose.Schema({
     id: { type: String, required: true },
     City: String,
