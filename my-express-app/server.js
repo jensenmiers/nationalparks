@@ -3,9 +3,9 @@ const express = require('express');
 require('dotenv').config(); // load environment variables from .env file
 
 const connectDB = require('./database');
-const Reviews = require('./models/Review');
-const Users = require('./models/User');
-const Parks = require('./models/Park')
+const Review = require('./models/Review');
+const User = require('./models/User');
+const Park = require('./models/Park')
 
 const app = express();
 const port = process.env.PORT || 3000;
