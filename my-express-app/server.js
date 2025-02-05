@@ -23,7 +23,7 @@ connectDB();
 
 // default route
 app.get('/', (req, res) => {
-    res.send('MongoDB connected with Express! Welcome to the National Parks API');
+    res.send('The Express server is running for the National Parks API');
 });
 
 // start the server
