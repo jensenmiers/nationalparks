@@ -1,6 +1,6 @@
 //server.js
-const express = require('express');
 require('dotenv').config(); // load environment variables from .env file
+const express = require('express');
 
 const connectDB = require('./database');
 const Review = require('./models/Review');
@@ -17,9 +17,9 @@ app.use(express.json());
 connectDB();
 
 // Routes
-// app.use('/api/parks', require('./routes/parks'));
-// app.use('/api/users', require('./routes/users'));
-// app.use('/api/reviews', require('./routes/reviews'));
+app.use('/api/parks', require('./routes/parks'));
+app.use('/api/users', require('./routes/users'));
+app.use('/api/reviews', require('./routes/reviews'));
 
 // default route
 app.get('/', (req, res) => {

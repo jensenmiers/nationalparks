@@ -4,7 +4,7 @@ const path = require('path');
 
 const User = require('./models/User');
 const Park = require('./models/Park');
-const Review = require('./models/review');
+const Review = require('./models/Review');
 
 require('dotenv').config();
 
