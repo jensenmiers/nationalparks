@@ -7,6 +7,10 @@ const Review = require('./models/Review');
 const User = require('./models/User');
 const Park = require('./models/Park')
 
+app.use('/api/parks', require('./routes/parks'));
+app.use('/api/users', require('./routes/users'));
+app.use('/api/reviews', require('./routes/reviews'));
+
 const app = express();
 const port = process.env.PORT || 3000;
 
