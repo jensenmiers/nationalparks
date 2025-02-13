@@ -1,7 +1,6 @@
 //server.js
 require('dotenv').config(); // load environment variables from .env file
 const express = require('express');
-
 const connectDB = require('./database');
 const Review = require('./models/Review');
 const User = require('./models/User');
@@ -16,6 +15,7 @@ const port = process.env.PORT || 3000;
 
 // Middleware to parse JSON bodies
 app.use(express.json());
+app.use(helmet());
 
 // connect to MongoDB
 connectDB();
@@ -28,6 +28,12 @@ app.use('/api/reviews', require('./routes/reviews'));
 // default route
 app.get('/', (req, res) => {
     res.send('The Express server is running for the National Parks API');
+});
+
+// Error handling middleware
+app.use((err, req, res, next) => {
+    console.error(err.stack);
+    res.status(500).send('Something broke!');
 });
 
 // start the server
