@@ -5,6 +5,7 @@ const connectDB = require('./database');
 const Review = require('./models/Review');
 const User = require('./models/User');
 const Park = require('./models/Park')
+const morgan = require('morgan');
 
 app.use('/api/parks', require('./routes/parks'));
 app.use('/api/users', require('./routes/users'));
@@ -16,6 +17,7 @@ const port = process.env.PORT || 3000;
 // Middleware to parse JSON bodies
 app.use(express.json());
 app.use(helmet());
+app.use(morgan('combined'));
 
 // connect to MongoDB
 connectDB();
