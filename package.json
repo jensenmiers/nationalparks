@@ -8,6 +8,7 @@
     "@testing-library/user-event": "^13.5.0",
     "dotenv": "^16.4.7",
     "haversine-distance": "^1.2.1",
+    "helmet": "^8.0.0",
     "mapbox-gl": "^2.13.0",
     "mongodb": "^6.13.0",
     "mongoose": "^8.9.6",

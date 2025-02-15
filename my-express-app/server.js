@@ -6,6 +6,7 @@ const Review = require('./models/Review');
 const User = require('./models/User');
 const Park = require('./models/Park')
 const morgan = require('morgan');
+const helmet = require('helmet');
 
 app.use('/api/parks', require('./routes/parks'));
 app.use('/api/users', require('./routes/users'));
