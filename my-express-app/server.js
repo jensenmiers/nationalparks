@@ -2,18 +2,15 @@
 require('dotenv').config(); // load environment variables from .env file
 const express = require('express');
 const connectDB = require('./database');
-const Review = require('./models/Review');
-const User = require('./models/User');
-const Park = require('./models/Park')
 const morgan = require('morgan');
 const helmet = require('helmet');
 
-app.use('/api/parks', require('./routes/parks'));
-app.use('/api/users', require('./routes/users'));
-app.use('/api/reviews', require('./routes/reviews'));
-
 const app = express();
 const port = process.env.PORT || 3000;
+
+const Review = require('./models/Review');
+const User = require('./models/User');
+const Park = require('./models/Park')
 
 // Middleware to parse JSON bodies
 app.use(express.json());
