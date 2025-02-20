@@ -8,8 +8,7 @@ const morgan = require('morgan');
 const helmet = require('helmet');
 
 const app = express();
-const port = process.env.MONGODB_URI || process.env.PORT;
-
+const port = process.env.PORT || 3000;  // Use default 3000 if not set
 
 
 const Review = require('./models/Review');
