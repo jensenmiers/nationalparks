@@ -6,7 +6,7 @@ import {useState, useEffect, useContext} from 'react'
 import { ParkContext } from '../context/ParkProvider';
 import Map from './Map';
 import { FaBookmark, FaRegBookmark } from 'react-icons/fa';
-import baseURI from './BaseURI';
+import baseURL from './BaseURL';
 import Loading from './Loading';
 
 function ParkDetail({ userData, onClickSave }) {
@@ -21,7 +21,7 @@ function ParkDetail({ userData, onClickSave }) {
     }, [userData])
 
     useEffect(()=>{
-        fetch(`${baseURI}/parks/${parkId}`)
+        fetch(`${baseURL}/parks/${parkId}`)
         .then(res => res.json())
         .then(setPark)
     },[])
@@ -46,7 +46,7 @@ function ParkDetail({ userData, onClickSave }) {
                 review: park.review ? [...park.review, newReview] : [newReview],                 
             })
         }
-        fetch(`${baseURI}/parks/${park["id"]}`,options)
+        fetch(`${baseURL}/parks/${park["id"]}`,options)
             .then(res => res.json())
             .then(jsresponse => {
                 setParks(parks.map(park => park.id === parkId ? jsresponse : park ))

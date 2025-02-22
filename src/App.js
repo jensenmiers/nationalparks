@@ -8,14 +8,12 @@ import MyParks from './components/MyParks'
 import ParkDetail from './components/ParkDetail'
 import About from './components/About'
 import { ParkContext } from './context/ParkProvider'
-import baseURI from './components/BaseURI';
+import baseURL from './components/BaseURL';
 import { PuffLoader } from 'react-spinners';
 import Loading from './components/Loading';
 
 function App() {
-  const parksUrl = `${baseURI}/parks`
-  const baseURL = baseURI
-  // const baseURL = 'http://localhost:3000'?????
+  const parksUrl = `${baseURL}/parks`
   const [parks,setParks] = useContext(ParkContext)
   const [userId, setUserId] = useState(1)
   const [userData, setUserData]=useState({})

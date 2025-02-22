@@ -2,7 +2,7 @@ import { useParams } from 'react-router-dom'
 import { useEffect, useState, useContext } from 'react'
 import ParkList from './ParkList'
 import { ParkContext } from '../context/ParkProvider'
-import baseURI from './BaseURI'
+import baseURL from './BaseURL'
  
 function MyParks({ userData, onClickSave }){
 
@@ -10,7 +10,7 @@ function MyParks({ userData, onClickSave }){
     const [parks, _] = useContext(ParkContext)
     const [userDataAlt, setUserDataAlt] = useState({})
     useEffect(()=> {
-        fetch(`${baseURI}/users/${userid}`)
+        fetch(`${baseURL}/users/${userid}`)
         .then(res => res.json())
         .then((json)=> {
             setUserDataAlt(json)
