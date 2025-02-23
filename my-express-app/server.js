@@ -8,8 +8,7 @@ const morgan = require('morgan');
 const helmet = require('helmet');
 
 const app = express();
-const port = process.env.PORT || 3000;  // Use default 3000 if not set
-
+const port = process.env.PORT || 3001;
 
 const Review = require('./models/Review');
 const User = require('./models/User');
