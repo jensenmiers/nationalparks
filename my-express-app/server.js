@@ -23,9 +23,11 @@ app.use(morgan('combined'));
 connectDB();
 
 // Routes
+console.log('Registering routes...');
 app.use('/api/parks', require('./routes/parks'));
 app.use('/api/users', require('./routes/users'));
 app.use('/api/reviews', require('./routes/reviews'));
+console.log('Routes registered.');
 
 // default route
 app.get('/', (req, res) => {

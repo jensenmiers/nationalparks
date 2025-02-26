@@ -43,7 +43,7 @@ function ParkDetail({ userData, onClickSave }) {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                review: park.review ? [...park.review, newReview] : [newReview],                 
+                review: park.review ? [...park.review, newReview] : [newReview],
             })
         }
         fetch(`${baseURL}/parks/${park["id"]}`,options)
