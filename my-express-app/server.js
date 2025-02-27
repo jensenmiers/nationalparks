@@ -22,6 +22,8 @@ app.use(morgan('combined'));
 // connect to MongoDB
 connectDB();
 
+
+
 // Routes
 console.log('Registering routes...');
 app.use('/api/parks', require('./routes/parks'));
@@ -33,6 +35,18 @@ console.log('Routes registered.');
 app.get('/', (req, res) => {
     res.send('The Express server is running for the National Parks API');
 });
+
+// Log all registered routes
+app._router.stack.forEach((middleware) => {
+    if (middleware.route) { // routes registered directly on the app
+      console.log(middleware.route);
+    } else if (middleware.name === 'router') { // router middleware
+      middleware.handle.stack.forEach((handler) => {
+        const route = handler.route;
+        route && console.log(route);
+      });
+    }
+  });
 
 // Error handling middleware
 app.use((err, req, res, next) => {
