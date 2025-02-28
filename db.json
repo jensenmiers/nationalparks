@@ -1,12 +1,4 @@
 {
-  "reviews": [
-    {
-      "userId": 1,
-      "parkId": "yell",
-      "text": "a great time",
-      "image": ""
-    }
-  ],
   "users": [
     {
       "id": 1,
@@ -135,13 +127,7 @@
           "title": "Fee Free Park"
         }
       ],
-      "states": "KY",
-      "review": [
-        {
-          "reviewText": "great",
-          "reviewNum": "5"
-        }
-      ]
+      "states": "KY"
     },
     {
       "id": "acad",
@@ -555,13 +541,7 @@
           "title": "No Entrance Fee"
         }
       ],
-      "states": "DC",
-      "review": [
-        {
-          "reviewText": "fantastic!",
-          "reviewNum": "5"
-        }
-      ]
+      "states": "DC"
     },
     {
       "id": "afbg",
@@ -6464,25 +6444,7 @@
           "title": "Entrance"
         }
       ],
-      "states": "WV",
-      "review": [
-        {
-          "reviewText": "great place!",
-          "reviewNum": ""
-        },
-        {
-          "reviewText": "",
-          "reviewNum": ""
-        },
-        {
-          "reviewText": "another great review!!!",
-          "reviewNum": ""
-        },
-        {
-          "reviewText": "fantastic!",
-          "reviewNum": ""
-        }
-      ]
+      "states": "WV"
     },
     {
       "id": "bowa",
@@ -7768,13 +7730,7 @@
           "title": "Entrance Fee"
         }
       ],
-      "states": "AR",
-      "review": [
-        {
-          "reviewText": "I love this place",
-          "reviewNum": ""
-        }
-      ]
+      "states": "AR"
     },
     {
       "id": "cabr",
@@ -11389,8 +11345,7 @@
           "title": "Entrance"
         }
       ],
-      "states": "CA",
-      "review": []
+      "states": "CA"
     },
     {
       "id": "chpi",
