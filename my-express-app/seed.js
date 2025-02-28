@@ -4,7 +4,7 @@ const path = require('path');
 
 const User = require('./models/User');
 const Park = require('./models/Park');
-const Review = require('./models/Review');
+// const Review = require('./models/Review');
 
 require('dotenv').config();
 
@@ -27,13 +27,14 @@ async function seedDatabase() {
         console.log('Data read from db.json:', data);
 
         // Check if data contains the expected arrays
-        if (!data.users || !data.parks || !data.reviews) {
+        if (!data.users || !data.parks) {
             throw new Error('db.json does not contain the expected structure');
         }
 
         await User.insertMany(data.users);
         await Park.insertMany(data.parks);
-        await Review.insertMany(data.reviews);
+        // no reviews to seed in the original db.json file. these are user generated
+        // await Review.insertMany(data.reviews);
 
         console.log('✅ Database seeded successfully');
         process.exit();
