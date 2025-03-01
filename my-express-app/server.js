@@ -3,12 +3,18 @@ require('dotenv').config(); // load environment variables from .env file
 console.log("✅ Loaded PORT in server.js:", process.env.PORT);
 console.log("✅ Loaded MONGODB_URI in server.js:", process.env.MONGODB_URI);
 const express = require('express');
+const cors = require('cors');
 const connectDB = require('./database');
 const morgan = require('morgan');
 const helmet = require('helmet');
 
 const app = express();
 const port = process.env.PORT || 3001;
+
+// use CORS middleware
+app.use(cors({
+  origin: 'http://localhost:3000'
+}));
 
 const Review = require('./models/Review');
 const User = require('./models/User');
@@ -21,8 +27,6 @@ app.use(morgan('combined'));
 
 // connect to MongoDB
 connectDB();
-
-
 
 // Routes
 console.log('Registering routes...');
