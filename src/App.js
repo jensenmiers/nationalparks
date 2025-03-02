@@ -13,7 +13,6 @@ import { PuffLoader } from 'react-spinners';
 import Loading from './components/Loading';
 
 function App() {
-  const parksUrl = `${baseURL}/parks`
   const [parks,setParks] = useContext(ParkContext)
   const [userId, setUserId] = useState(1)
   const [userData, setUserData]=useState({})
@@ -21,7 +20,7 @@ function App() {
 
   useEffect(() => {
     setIsLoading(true)
-    fetch(parksUrl)
+    fetch(`${baseURL}/parks`)
      .then(res => res.json())
      .then((data)=>{
         setParks(data)
