@@ -20,14 +20,14 @@ function App() {
 
   useEffect(() => {
     setIsLoading(true)
-    fetch(`${baseURL}/parks`)
+    fetch(`${baseURL}/api/parks`)
      .then(res => res.json())
      .then((data)=>{
         setParks(data)
         setIsLoading(false)
     })
     .then(
-      fetch(`${baseURL}/users/${userId}`)
+      fetch(`${baseURL}/api/users/${userId}`)
       .then(res => res.json())
       .then(setUserData)
     )
@@ -38,7 +38,7 @@ function App() {
 
     const arrayBody = isSaved ? userData.savedParks.filter(id=> id !== savedPark.id) : [...userData.savedParks, savedPark.id]
 
-    fetch(`${baseURL}/users/${userId}`, {
+    fetch(`${baseURL}/api/users/${userId}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json"

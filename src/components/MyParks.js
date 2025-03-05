@@ -10,7 +10,7 @@ function MyParks({ userData, onClickSave }){
     const [parks, _] = useContext(ParkContext)
     const [userDataAlt, setUserDataAlt] = useState({})
     useEffect(()=> {
-        fetch(`${baseURL}/users/${userid}`)
+        fetch(`${baseURL}/api/users/${userid}`)
         .then(res => res.json())
         .then((json)=> {
             setUserDataAlt(json)

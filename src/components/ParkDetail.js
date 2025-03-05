@@ -21,7 +21,7 @@ function ParkDetail({ userData, onClickSave }) {
     }, [userData])
 
     useEffect(()=>{
-        fetch(`${baseURL}/parks/${parkId}`)
+        fetch(`${baseURL}/api/parks/${parkId}`)
         .then(res => res.json())
         .then(setPark)
     },[])
@@ -46,7 +46,7 @@ function ParkDetail({ userData, onClickSave }) {
                 review: park.review ? [...park.review, newReview] : [newReview],
             })
         }
-        fetch(`${baseURL}/parks/${park["id"]}`,options)
+        fetch(`${baseURL}/api/parks/${park["id"]}`,options)
             .then(res => res.json())
             .then(jsresponse => {
                 setParks(parks.map(park => park.id === parkId ? jsresponse : park ))
