@@ -14,8 +14,8 @@ async function seedDatabase() {
         console.log('✅ Connected to MongoDB');
 
         // Clear existing data
-        // await User.deleteMany();
-        // await Park.deleteMany();
+        await User.deleteMany();
+        await Park.deleteMany();
         // await Review.deleteMany();
 
         // Correctly construct the path to db.json
@@ -31,14 +31,25 @@ async function seedDatabase() {
             throw new Error('db.json does not contain the expected structure');
         }
 
+        // Insert users
         await User.insertMany(data.users);
-        await Park.insertMany(data.parks);
-        // no reviews to seed in the original db.json file. these are user generated
-        // await Review.insertMany(data.reviews);
 
+        // Transform parks data to ensure field names match what the React app expects
+        const transformedParks = data.parks.map(park => {
+            // Create a new object with the transformed fields
+            return {
+                ...park,
+                'Location Name': park.LocationName || park['Location Name'],
+                'Zip Code': park.ZipCode || park['Zip Code']
+            };
+        });
+
+        // Insert transformed parks
+        await Park.insertMany(transformedParks);
+        
         console.log('✅ Database seeded successfully');
         process.exit();
-    }catch (error) {
+    } catch (error) {
         console.error('❌ Error seeding database:', error);
         process.exit(1);
     }

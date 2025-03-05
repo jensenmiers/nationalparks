@@ -27,7 +27,6 @@ function ParkListItem({ park, onClickSave, userData }){
                     <div className="parkCardTitle">
                         <strong>{park['Location Name']}</strong>
                     </div>
-                    
                     <div className={isDescriptionHidden ? "parkDescriptionCompact":"parkDescription"}>                    
                         <p>{park.description}</p>
                     </div>

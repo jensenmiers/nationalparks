@@ -35,9 +35,9 @@ function ParkPage({ onClickSave, userData }) {
   const [activitiesToDisplay, setActivitiesToDisplay] = useState(DEFAULT_ACTIVTY)
 
   function distToZip(parkObj){
-    return haversine(latLon, 
+    return haversine(latLon,
       {
-        lat: Number(parkObj.Latitude), 
+        lat: Number(parkObj.Latitude),
         lon: Number(parkObj.Longitude)
       })
   }
@@ -54,8 +54,10 @@ function ParkPage({ onClickSave, userData }) {
   }
 
   const filteredParks = parks.filter(park => {
-    return park['Location Name'].toLowerCase().includes(searchTerm.toLowerCase()) ||
-    park?.activities?.map(obj => obj.name? obj.name.toLowerCase() : "").join(', ').includes(searchTerm.toLowerCase())
+    const locationName = park['Location Name'] || '';
+    const activities = park.activities || [];
+    return locationName.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        activities.map(obj => obj.name ? obj.name.toLowerCase() : "").join(', ').includes(searchTerm.toLowerCase());
   })
   ?.sort((p1, p2) => {
     return latLon.lat ? distToZip(p1) - distToZip(p2) : (p1['Location Name'] && p2['Location Name'] ? p1['Location Name'].localeCompare(p2['Location Name']) : 0 )
