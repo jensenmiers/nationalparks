@@ -1,15 +1,23 @@
 //server.js
-require('dotenv').config(); // load environment variables from .env file
+try {
+  require('dotenv').config();
+} catch (error) {
+  console.log('dotenv not found, using environment variables from the system');
+}
+
 console.log("✅ Loaded PORT in server.js:", process.env.PORT);
 console.log("✅ Loaded MONGODB_URI in server.js:", process.env.MONGODB_URI);
 const express = require('express');
 const cors = require('cors');
-const connectDB = require('./database');
+const mongoose = require('mongoose');
 const morgan = require('morgan');
 const helmet = require('helmet');
 
 const app = express();
 const port = process.env.PORT || 3001;
+const mongoUri = process.env.MONGODB_URI;
+
+console.log(`Server configured to use port: ${port}`);
 
 // use CORS middleware
 app.use(cors({
@@ -25,8 +33,10 @@ app.use(express.json());
 app.use(helmet());
 app.use(morgan('combined'));
 
-// connect to MongoDB
-connectDB();
+// Connect to MongoDB
+mongoose.connect(mongoUri)
+  .then(() => console.log('✅ Connected to MongoDB'))
+  .catch(err => console.error('❌ MongoDB Connection Error:', err));
 
 // Routes
 console.log('Registering routes...');
@@ -60,5 +70,5 @@ app.use((err, req, res, next) => {
 
 // start the server
 app.listen(port, () => {
-    console.log(`🚀 Server running at http://localhost:${port}`);
+    console.log(`🚀 Server running on port ${port}`);
 });
